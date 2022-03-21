@@ -1,0 +1,116 @@
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: #808080;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.toolbar #facebook-logo {
+  height: 40px;
+  margin: 0 8px;
+}
+
+.toolbar #instagram-logo {
+  height: 40px;
+  margin: 0 8px;
+}
+
+.toolbar #linkedin-logo {
+  height: 40px;
+  margin: 0 8px;
+}
+
+
+.toolbar #facebook-logo:hover,
+.toolbar #instagram-logo:hover,
+.toolbar #linkedin-logo:hover {
+  opacity: 0.8;
+}
+
+.spacer {
+  flex: 1;
+}
+
+svg.material-icons {
+  height: 24px;
+  width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
+}
+
+.login-button svg.material-icons path {
+  fill: #fff;
+}
+
+.login-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.login-button {
+  all: unset;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #808080;
+  color: #ffffff;
+  height: 10px;
+  width: 120px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.login-button-container .login-button:not(:last-child) {
+  margin-right: 0;
+}
+
+.login-button.login-button-small {
+  height: 16px;
+  width: 168px;
+}
+
+.login-button-container .login-button:not(.highlight-login-button) {
+  cursor: pointer;
+}
+
+.login-button-container .login-button:not(.highlight-login-button):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.login-button-container .login-button:not(.highlight-login-button):hover .material-icons path {
+  fill: white;
+}
+
+.login-button.highlight-login-button {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.login-button.login-button.highlight-login-button span {
+  margin-left: 60px;
+}
