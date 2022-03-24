@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 56px;
   display: flex;
   align-items: center;
   background-color: white;
@@ -15,21 +15,12 @@
   margin: 0 16px;
 }
 
-.toolbar #facebook-logo {
-  height: 40px;
-  margin: 0 8px;
-}
-
-.toolbar #instagram-logo {
-  height: 40px;
-  margin: 0 8px;
-}
-
+.toolbar #facebook-logo,
+.toolbar #instagram-logo,
 .toolbar #linkedin-logo {
-  height: 40px;
-  margin: 0 8px;
+  height: 35px;
+  margin: 0 4px;
 }
-
 
 .toolbar #facebook-logo:hover,
 .toolbar #instagram-logo:hover,
@@ -58,7 +49,7 @@ svg.material-icons:not(:last-child) {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .login-button {
@@ -79,22 +70,12 @@ svg.material-icons:not(:last-child) {
   line-height: 24px;
 }
 
-.login-button-container .login-button:not(:last-child) {
-  margin-right: 0;
-}
-
-.login-button.login-button-small {
-  height: 16px;
-  width: 168px;
-}
-
 .login-button-container .login-button:not(.highlight-login-button) {
   cursor: pointer;
 }
 
 .login-button-container .login-button:not(.highlight-login-button):hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  opacity: 0.8;
 }
 
 .login-button-container .login-button:not(.highlight-login-button):hover .material-icons path {

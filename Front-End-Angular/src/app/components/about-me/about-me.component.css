@@ -1,0 +1,17 @@
+.about-container{
+  box-sizing: border-box;
+}
+
+img{
+  display: block;
+  border-radius: 50%;
+  width: 168px;
+  height: 168px;
+}
+
+.img-profile{
+  position: relative;
+  margin-top: -80px;
+}
+
+
