@@ -1,17 +1,20 @@
 .about-container{
-  box-sizing: border-box;
+  position: relative;
 }
 
 img{
-  display: block;
   border-radius: 50%;
   width: 168px;
   height: 168px;
 }
 
 .img-profile{
-  position: relative;
-  margin-top: -80px;
+  margin-top: -84px;
+  margin-left: -30px;
 }
 
-
+.nombre{
+  position: relative;
+  top: -75px;
+  text-align: center;
+}
