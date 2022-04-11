@@ -32,8 +32,8 @@ export class SidebarComponent implements OnInit {
    * Función para abrir y cerrar el menu cuando se clickea el toggle.
    */
   toggleAction(){
-    let menuToggle = this.elem.nativeElement.querySelector('.toggle');
-    let sidebar = this.elem.nativeElement.querySelector('.sidebar')
+    const menuToggle = this.elem.nativeElement.querySelector('.toggle');
+    const sidebar = this.elem.nativeElement.querySelector('.sidebar')
     menuToggle.onclick = function(){
       menuToggle.classList.toggle('active');
       sidebar.classList.toggle('active');
@@ -41,8 +41,9 @@ export class SidebarComponent implements OnInit {
   }
 
   /**
-   * Función que lista el elemento .list y agregar la clase 'active' cuando se clickea,
-   * mientras que tambien se remueve la misma clase a los demas elementos.
+   * Función para agregar la clase 'active' en el elemento al hacer
+   * click en el mismo mientras que en los demas elementos 'list'
+   * se remueve la clase 'active'.
    */
   markActive(){
     const list = this.elem.nativeElement.querySelectorAll('.list');
@@ -55,7 +56,21 @@ export class SidebarComponent implements OnInit {
         list[i].className = 'list active';
       }
     }
+
+    /**
+     * Al hacer click en el logo, se marca 'active' el primer elemento
+     * de list, en este caso 'Inicio'.
+     */
+    const logo = this.elem.nativeElement.querySelector('.logo');
+    logo.onclick = function(){
+      let i = 0;
+      while(i < list.length){
+        list[i++].className = 'list';
+      }
+      list[0].className = 'list active';
+    }
   }
+
   ngOnInit(): void {
 
   }

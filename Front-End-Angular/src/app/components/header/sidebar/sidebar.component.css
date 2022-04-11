@@ -1,8 +1,8 @@
 /* Sidebar */
 .sidebar{
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
   bottom: 20px;
   width: 60px;
   height: auto;
@@ -24,7 +24,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-left: 0px;
 }
 .sidebar ul li{
@@ -100,6 +100,12 @@
 }
 .sidebar ul li a .icon fa-icon{
   font-size: 1.25em;
+}
+.sidebar ul li a img{
+  position: relative;
+  display: block;
+  padding-left: 6px;
+  height: 35px;
 }
 .sidebar ul li a .title{
   position: relative;
