@@ -1,46 +1,66 @@
-<div class="navbar">
+<div class="sidebar">
   <ul>
-    <li class="list">
-      <a href="#">
-        <i class="fas fa-home"></i>
-        <span>Inicio</span>
+    <li class="list active">
+      <a href="#" (click)="markActive()">
+        <b></b>
+        <b></b>
+        <span class="icon"><fa-icon [icon]="faHouse"></fa-icon></span>
+        <span class="title">Inicio</span>
       </a>
     </li>
     <li class="list">
-      <a href="#sobre-mi">
-        <i class="fas fa-home"></i>
-        <span>Sobre mi</span>
+      <a href="#sobre-mi" (click)="markActive()">
+        <b></b>
+        <b></b>
+        <span class="icon"><fa-icon [icon]="faUser"></fa-icon></span>
+        <span class="title">Sobre mi</span>
       </a>
     </li>
     <li class="list">
-      <a href="#experiencia">
-        <i class="fas fa-home"></i>
-        <span>Experiencia</span>
+      <a href="#experiencia" (click)="markActive()">
+        <b></b>
+        <b></b>
+        <span class="icon"><fa-icon [icon]="faStar"></fa-icon></span>
+        <span class="title">Experiencia</span>
       </a>
     </li>
     <li class="list">
-      <a href="#educacion">
-        <i class="fas fa-home"></i>
-        <span>Educación</span>
+      <a href="#educacion" (click)="markActive()">
+        <b></b>
+        <b></b>
+        <span class="icon"><fa-icon [icon]="faGraduationCap"></fa-icon></span>
+        <span class="title">Educación</span>
       </a>
     </li>
     <li class="list">
-      <a href="#habilidades">
-        <i class="fas fa-home"></i>
-        <span>Habilidades</span>
+      <a href="#habilidades" (click)="markActive()">
+        <b></b>
+        <b></b>
+        <span class="icon"><fa-icon [icon]="faUserGear"></fa-icon></span>
+        <span class="title">Habilidades</span>
       </a>
     </li>
     <li class="list">
-      <a href="#proyectos">
-        <i class="fas fa-home"></i>
-        <span>Proyectos</span>
+      <a href="#proyectos" (click)="markActive()">
+        <b></b>
+        <b></b>
+        <span class="icon"><fa-icon [icon]="faBriefcase"></fa-icon></span>
+        <span class="title">Proyectos</span>
       </a>
     </li>
     <li class="list">
-      <a href="#contacto">
-        <i class="fas fa-home"></i>
-        <span>Contacto</span>
+      <a href="#contacto" (click)="markActive()">
+        <b></b>
+        <b></b>
+        <span class="icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span>
+        <span class="title">Contacto</span>
       </a>
     </li>
   </ul>
+</div>
+<div class="toggle">
+  <a href="#" (click)="toggleAction()">
+    <fa-icon [icon]="faBars" class="open"></fa-icon>
+    <fa-icon [icon]="faX" class="close"></fa-icon>
+  </a>
 </div>
