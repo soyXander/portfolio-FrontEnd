@@ -3,7 +3,7 @@
   position: fixed;
   top: 10px;
   left: 10px;
-  bottom: 20px;
+  bottom: 10px;
   width: 60px;
   height: auto;
   background: tomato;
@@ -17,7 +17,7 @@
   display: none;
 }
 .sidebar.active{
-  width: 225px;
+  width: 180px;
 }
 .sidebar ul{
   position: absolute;
@@ -93,9 +93,9 @@
 .sidebar ul li a .icon{
   position: relative;
   display: block;
-  min-width: 55px;
-  height: 55px;
-  line-height: 55px;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
 }
 .sidebar ul li a .icon fa-icon{
@@ -111,8 +111,8 @@
   position: relative;
   display: block;
   padding-left: 10px;
-  height: 55px;
-  line-height: 55px;
+  height: 60px;
+  line-height: 60px;
   white-space: normal;
 }
 
