@@ -1,6 +1,6 @@
 .banner {
     position: relative;
-    width: 1250px;
+    width: 1150px;
     height: 463px;
     display: flex;
     justify-content: center;
@@ -18,4 +18,5 @@
   background-size: cover;
   background-position: center center;
   filter: brightness(60%);
+  border-radius: 20px;
 }

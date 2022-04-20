@@ -1,20 +1,31 @@
+/* *{
+  border: 1px solid black;
+} */
+
 .about-container{
   position: relative;
 }
 
-img{
+.about-container .img-profile{
+  margin-top: -84px;
+  margin-left: -30px;
+}
+
+.about-container .img-profile img{
   border-radius: 50%;
   width: 168px;
   height: 168px;
 }
 
-.img-profile{
-  margin-top: -84px;
-  margin-left: -30px;
-}
-
-.nombre{
+.about-container .nombre{
   position: relative;
   top: -75px;
   text-align: center;
+  border: 1px solid black;
+}
+
+.about-container .info{
+  position: relative;
+  top: -75px;
+  border: 1px solid black;
 }
