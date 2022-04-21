@@ -116,7 +116,13 @@ img{
   padding-left: 10px;
   height: 60px;
   line-height: 60px;
-  white-space: normal;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .4s;
+}
+.sidebar.active ul li a .title{
+  opacity: 1;
+  transition: opacity .4s;
 }
 
 /* Toggle */
