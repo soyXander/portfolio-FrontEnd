@@ -1,0 +1,31 @@
+.login{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  right: 80px;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: tomato;
+  cursor: pointer;
+}
+.login fa-icon{
+  position: relative;
+  color: white;
+  font-size: 18px;
+  padding-right: 10px;
+}
+.login a {
+  color: white;
+  text-decoration: none;
+}
+
+.login a .text{
+  position: relative;
+  height: 55px;
+  line-height: 55px;
+  white-space: normal;
+  text-transform: uppercase;
+}
