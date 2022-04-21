@@ -8,9 +8,12 @@ import { BannerComponent } from './components/banner/banner.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { SidebarComponent } from './components/header/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/login/login.component';
+
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,16 @@ import { LoginComponent } from './components/login/login.component';
     SidebarComponent,
     ExperienceComponent,
     EducationComponent,
+    SkillsComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgCircleProgressModule.forRoot({
+
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
