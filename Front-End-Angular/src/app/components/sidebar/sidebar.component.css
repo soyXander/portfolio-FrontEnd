@@ -1,4 +1,4 @@
-img{
+.logo img{
   max-width: none;
 }
 /* Sidebar */
@@ -8,7 +8,6 @@ img{
   left: 10px;
   bottom: 10px;
   width: 60px;
-  height: auto;
   background: tomato;
   border-radius: 10px;
   border-left: 5px solid tomato;
@@ -96,7 +95,7 @@ img{
 .sidebar ul li a .icon{
   position: relative;
   display: block;
-  min-width: 60px;
+  min-width: 55px;
   height: 60px;
   line-height: 60px;
   text-align: center;
