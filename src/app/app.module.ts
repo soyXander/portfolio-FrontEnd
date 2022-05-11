@@ -17,6 +17,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,9 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
     NgCircleProgressModule.forRoot({
 
     }),
-    Ng2IziToastModule
+    Ng2IziToastModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

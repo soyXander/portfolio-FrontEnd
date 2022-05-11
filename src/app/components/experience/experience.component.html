@@ -3,17 +3,19 @@
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black"><fa-icon [icon]="faStar"></fa-icon> Experiencia</h1>
-        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+        <div class="h-1 w-20 bg-tomato rounded"></div>
+        <div><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="null">Agregar Experiencia</button></div>
       </div>
       <p class="lg:w-1/2 w-full leading-relaxed text-gray-900 text-opacity-90">Mis experiencias de trabajo. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, eligendi! Quam suscipit ipsa doloribus dolorem eveniet, ut reiciendis officiis aperiam soluta aliquid animi quod in nobis quas autem dignissimos illum.</p>
     </div>
     <div class="flex flex-wrap -m-4">
-      <div class="xl:w-1/3 md:w-1/2 p-4">
+      <div class="xl:w-1/3 md:w-1/2 p-4" *ngFor="let experience of experiences">
         <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content">
-          <h3 class="tracking-widest text-orange-600 text-xs font-medium title-font">PUESTO</h3>
-          <h2 class="text-lg text-black font-medium title-font mb-4">Nombre de la empresa</h2>
-          <p class="leading-relaxed text-base">Descripción rapida del trabajo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo consectetur accusamus hic!</p>
+          <h3 class="tracking-widest text-orange-600 text-xs font-medium title-font">{{experience.position}}</h3>
+          <h2 class="text-lg text-black font-medium title-font mb-4">{{experience.companyName}}</h2>
+          <p class="leading-relaxed text-base">{{experience.description}}</p>
+          <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full" (click)="delete(experience.id)">Borrar</button>
         </div>
       </div>
     </div>
