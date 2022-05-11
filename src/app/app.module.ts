@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { Ng2IziToastModule } from 'ng2-izitoast';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
     FontAwesomeModule,
     NgCircleProgressModule.forRoot({
 
-    })
+    }),
+    Ng2IziToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
