@@ -26,7 +26,8 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   constructor(
     private expService: ExperienceService,
     private iziToast: Ng2IzitoastService,
-    private router: Router) {
+    private router: Router
+    ) {
       this.navSubscription = this.router.events.subscribe((evt: any) => {
         if (evt instanceof NavigationEnd) {
           this.loadExp();
@@ -38,13 +39,17 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     this.loadExp();
   }
 
-  public loadExp(): void {
+  loadExp(): void {
     this.expService.list().subscribe(
       data => {
         this.experiences = data;
       },
       err => {
-        console.log(err);
+        this.iziToast.error({
+          title: 'Error',
+          message: err.error.message,
+          position: 'bottomRight'
+        });
       }
     );
   }
@@ -60,7 +65,11 @@ export class ExperienceComponent implements OnInit, OnDestroy {
         this.loadExp();
       },
       err => {
-        console.log(err);
+        this.iziToast.error({
+          title: 'Error',
+          message: err.error.message,
+          position: 'bottomRight'
+        });
       }
     );
   }

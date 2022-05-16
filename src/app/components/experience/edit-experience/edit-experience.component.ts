@@ -57,10 +57,6 @@ export class EditExperienceComponent implements OnInit {
   }
 
   @HostListener('window:keyup.esc')
-  onKeyUp(){
-    this.router.navigate(['/']);
-  }
-
   close(){
     this.router.navigate(['/']);
   }

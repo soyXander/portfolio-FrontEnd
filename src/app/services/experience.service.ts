@@ -21,7 +21,7 @@ export class ExperienceService {
   }
 
   public save(experience: Experience): Observable<any> {
-    return this.httpClient.post<any>(this.experienceURL + 'crear', experience);
+    return this.httpClient.post<any>(this.experienceURL + 'agregar', experience);
   }
 
   public update(id: number, experience: Experience): Observable<any> {

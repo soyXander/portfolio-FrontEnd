@@ -13,11 +13,12 @@ import { ExperienceService } from 'src/app/services/experience.service';
 
 export class AddExperienceComponent implements OnInit {
 
-  faPlus = faPlus;
+  //faPlus = faPlus;
   constructor(
-    private experienceService: ExperienceService,
-    private router: Router,
-    private iziToast: Ng2IzitoastService) { }
+    private expService: ExperienceService,
+    private iziToast: Ng2IzitoastService,
+    private router: Router
+    ) { }
 
   companyName: string = '';
   position: string = '';
@@ -28,7 +29,7 @@ export class AddExperienceComponent implements OnInit {
 
   onCreate(): void {
     const experience = new Experience(this.companyName, this.position, this.description);
-    this.experienceService.save(experience).subscribe(
+    this.expService.save(experience).subscribe(
       data => {
         this.iziToast.success({
           title: 'Experiencia creada',
@@ -48,11 +49,8 @@ export class AddExperienceComponent implements OnInit {
   }
 
   @HostListener('window:keyup.esc')
-  onKeyUp(){
-    this.router.navigate(['/']);
-  }
-
   close(){
     this.router.navigate(['/']);
   }
+
 }
