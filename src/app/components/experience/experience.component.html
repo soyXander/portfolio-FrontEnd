@@ -4,7 +4,13 @@
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black"><fa-icon [icon]="faStar"></fa-icon> Experiencia</h1>
         <div class="h-1 w-20 bg-tomato rounded"></div>
-        <div><app-add-experience></app-add-experience></div>
+        <div class="mt-2 w-52 h-12 flex justify-center items-center bg-tomato rounded-xl cursor-pointer" routerLink="/experiencia/agregar" >
+          <a>
+            <span class="pr-2"><fa-icon [icon]="faPlus" class="text-white"></fa-icon></span>
+            <span class="uppercase text-white">Agregar Experiencia</span>
+          </a>
+        </div>
+        <div></div>
       </div>
       <p class="lg:w-1/2 w-full leading-relaxed text-gray-900 text-opacity-90">Mis experiencias de trabajo. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, eligendi! Quam suscipit ipsa doloribus dolorem eveniet, ut reiciendis officiis aperiam soluta aliquid animi quod in nobis quas autem dignissimos illum.</p>
     </div>

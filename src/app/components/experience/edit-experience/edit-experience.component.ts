@@ -14,7 +14,6 @@ export class EditExperienceComponent implements OnInit {
   experiences: Experience = new Experience('companyName', 'position', 'description');
 
   constructor(
-    //public experiences: Experience,
     private expServices: ExperienceService,
     private activatedRoute: ActivatedRoute,
     private router: Router,

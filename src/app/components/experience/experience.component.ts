@@ -1,6 +1,6 @@
 import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
-import { faPen, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPlus, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -16,9 +16,10 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   navSubscription: any;
 
   // Iconos
+  faPen = faPen;
+  faPlus = faPlus;
   faStar = faStar;
   faXmark = faXmark;
-  faPen = faPen;
 
   experiences: Experience[] = [];
 

@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, Injectable, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Experience } from 'src/app/models/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
-import { ExperienceComponent } from '../experience.component';
 
 @Component({
   selector: 'app-add-experience',
@@ -14,10 +14,10 @@ import { ExperienceComponent } from '../experience.component';
 export class AddExperienceComponent implements OnInit {
 
   faPlus = faPlus;
-  constructor(private elem: ElementRef,
-              private experienceService: ExperienceService,
-              private iziToast: Ng2IzitoastService,
-              private exp: ExperienceComponent) { }
+  constructor(
+    private experienceService: ExperienceService,
+    private router: Router,
+    private iziToast: Ng2IzitoastService) { }
 
   companyName: string = '';
   position: string = '';
@@ -35,8 +35,7 @@ export class AddExperienceComponent implements OnInit {
           message: data.message,
           position: 'bottomRight'
         });
-        this.exp.loadExp();
-        this.toggleModal();
+        this.router.navigate(['/']);
       },
       err => {
         this.iziToast.error({
@@ -44,21 +43,16 @@ export class AddExperienceComponent implements OnInit {
           message: err.error.message,
           position: 'bottomRight'
       });
-      this.toggleModal();
+      this.router.navigate(['/']);
     });
-  }
-
-  toggleModal(){
-    const modal = this.elem.nativeElement.querySelector('.modal-addexp');
-    modal.classList.toggle('opacity-0');
-    modal.classList.toggle('pointer-events-none');
   }
 
   @HostListener('window:keyup.esc')
   onKeyUp(){
-    const modal = this.elem.nativeElement.querySelector('.modal');
-    if(!modal.classList.contains('opacity-0')){
-      this.toggleModal();
-    }
+    this.router.navigate(['/']);
+  }
+
+  close(){
+    this.router.navigate(['/']);
   }
 }
