@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddExperienceComponent } from './components/experience/add-experience/add-experience.component';
 import { EditExperienceComponent } from './components/experience/edit-experience/edit-experience.component';
+import { AddEducationComponent } from './components/education/add-education/add-education.component';
+import { EditEducationComponent } from './components/education/edit-education/edit-education.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { EditExperienceComponent } from './components/experience/edit-experience
     LoginComponent,
     ProjectsComponent,
     AddExperienceComponent,
-    EditExperienceComponent
+    EditExperienceComponent,
+    AddEducationComponent,
+    EditEducationComponent
   ],
   imports: [
     BrowserModule,

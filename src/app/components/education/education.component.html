@@ -3,17 +3,38 @@
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black"><fa-icon [icon]="faGraduationCap"></fa-icon> Educación</h1>
-        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+        <div class="h-1 w-20 bg-tomato rounded"></div>
+        <div class="mt-2 w-52 h-12 flex justify-center items-center bg-tomato rounded-xl cursor-pointer" routerLink="/educacion/agregar" >
+          <a>
+            <span class="pr-2"><fa-icon [icon]="faPlus" class="text-white"></fa-icon></span>
+            <span class="uppercase text-white">Agregar Educación</span>
+          </a>
+        </div>
+        <div></div>
       </div>
-      <p class="lg:w-1/2 w-full leading-relaxed text-gray-900 text-opacity-90">Mi formacion academica. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, eligendi! Quam suscipit ipsa doloribus dolorem eveniet, ut reiciendis officiis aperiam soluta aliquid animi quod in nobis quas autem dignissimos illum.</p>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-900 text-opacity-90">Mis experiencias de trabajo. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, eligendi! Quam suscipit ipsa doloribus dolorem eveniet, ut reiciendis officiis aperiam soluta aliquid animi quod in nobis quas autem dignissimos illum.</p>
     </div>
     <div class="flex flex-wrap -m-4">
-      <div class="xl:w-1/3 md:w-1/2 p-4">
+      <div class="xl:w-1/3 md:w-1/2 p-4" *ngFor="let education of educations">
         <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content">
-          <h3 class="tracking-widest text-orange-600 text-xs font-medium title-font">TITULO/CERTIFICADO</h3>
-          <h2 class="text-lg text-black font-medium title-font mb-4">Nombre del instituto</h2>
-          <p class="leading-relaxed text-base">Descripción rapida del estudio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo consectetur accusamus hic!</p>
+          <h3 class="tracking-widest text-orange-600 text-xs font-medium title-font">{{education.certification}}</h3>
+          <h2 class="text-lg text-black font-medium title-font mb-4">{{education.institute}}</h2>
+          <p class="leading-relaxed text-base">{{education.description}}</p>
+          <div class="flex">
+            <div class="w-1/2 mr-3 mt-2 h-10 flex justify-center items-center bg-tomato rounded-xl cursor-pointer" routerLink="/educacion/editar/{{education.id}}" >
+              <a>
+                <span class="pr-2"><fa-icon [icon]="faPen" class="text-white"></fa-icon></span>
+                <span class="uppercase text-white">Editar</span>
+              </a>
+            </div>
+            <div class="w-1/2 mt-2 h-10 flex justify-center items-center bg-tomato rounded-xl cursor-pointer" (click)="delete(education.id)" >
+              <a>
+                <span class="pr-2"><fa-icon [icon]="faXmark" class="text-white"></fa-icon></span>
+                <span class="uppercase text-white">Borrar</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
