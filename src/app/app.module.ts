@@ -19,6 +19,8 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AddExperienceComponent } from './components/experience/add-experience/add-experience.component';
+import { EditExperienceComponent } from './components/experience/edit-experience/edit-experience.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FormsModule } from '@angular/forms';
     EducationComponent,
     SkillsComponent,
     LoginComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    AddExperienceComponent,
+    EditExperienceComponent
   ],
   imports: [
     BrowserModule,

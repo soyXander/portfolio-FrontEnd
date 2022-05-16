@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-experience',
@@ -10,21 +11,34 @@ import { ExperienceService } from 'src/app/services/experience.service';
   styleUrls: ['./experience.component.css']
 })
 
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent implements OnInit, OnDestroy {
 
+  navSubscription: any;
+
+  // Iconos
   faStar = faStar;
+  faXmark = faXmark;
+  faPen = faPen;
 
   experiences: Experience[] = [];
 
-  constructor(private experienceService: ExperienceService,
-              public iziToast: Ng2IzitoastService) { }
+  constructor(
+    private expService: ExperienceService,
+    private iziToast: Ng2IzitoastService,
+    private router: Router) {
+      this.navSubscription = this.router.events.subscribe((evt: any) => {
+        if (evt instanceof NavigationEnd) {
+          this.loadExp();
+        }
+      });
+    }
 
   ngOnInit(): void {
-    this.showExp();
+    this.loadExp();
   }
 
-  showExp(): void {
-    this.experienceService.list().subscribe(
+  public loadExp(): void {
+    this.expService.list().subscribe(
       data => {
         this.experiences = data;
       },
@@ -34,19 +48,25 @@ export class ExperienceComponent implements OnInit {
     );
   }
 
-  delete(id: any) {
-    this.experienceService.delete(id).subscribe(
+  delete(id: any): void {
+    this.expService.delete(id).subscribe(
       data => {
-        this.iziToast.success({
+        this.iziToast.info({
           title: 'Experiencia eliminada',
-          message: 'La experiencia ha sido eliminada correctamente',
-          position: 'topRight'
+          message: data.message,
+          position: 'bottomRight'
         });
-        this.showExp();
+        this.loadExp();
       },
       err => {
         console.log(err);
       }
     );
+  }
+
+  ngOnDestroy() {
+    if (this.navSubscription) {
+       this.navSubscription.unsubscribe();
+    }
   }
 }
