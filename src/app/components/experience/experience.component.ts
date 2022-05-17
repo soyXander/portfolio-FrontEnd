@@ -74,7 +74,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.navSubscription) {
        this.navSubscription.unsubscribe();
     }

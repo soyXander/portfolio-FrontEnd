@@ -36,7 +36,7 @@ export class AddExperienceComponent implements OnInit {
           message: data.message,
           position: 'bottomRight'
         });
-        this.router.navigate(['/']);
+        this.close();
       },
       err => {
         this.iziToast.error({
@@ -44,7 +44,7 @@ export class AddExperienceComponent implements OnInit {
           message: err.error.message,
           position: 'bottomRight'
       });
-      this.router.navigate(['/']);
+      this.close();
     });
   }
 

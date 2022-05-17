@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { faPen, faPlaceOfWorship, faPlus, faUserGear, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
@@ -10,7 +10,7 @@ import { SkillService } from 'src/app/services/skill.service';
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent implements OnInit {
+export class SkillComponent implements OnInit, OnDestroy {
 
   navSubscription: any;
 
