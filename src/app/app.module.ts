@@ -14,7 +14,7 @@ import { SkillComponent } from './components/skill/skill.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { ProjectsComponent } from './components/projects/projects.component';
+import { ProjectComponent } from './components/project/project.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +25,8 @@ import { AddEducationComponent } from './components/education/add-education/add-
 import { EditEducationComponent } from './components/education/edit-education/edit-education.component';
 import { AddSkillComponent } from './components/skill/add-skill/add-skill.component';
 import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.component';
+import { AddProjectComponent } from './components/project/add-project/add-project.component';
+import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +39,15 @@ import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.com
     EducationComponent,
     SkillComponent,
     LoginComponent,
-    ProjectsComponent,
+    ProjectComponent,
     AddExperienceComponent,
     EditExperienceComponent,
     AddEducationComponent,
     EditEducationComponent,
     AddSkillComponent,
-    EditSkillComponent
+    EditSkillComponent,
+    AddProjectComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,
