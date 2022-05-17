@@ -1,30 +1,31 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ng2IzitoastService } from 'ng2-izitoast';
-import { Experience } from 'src/app/models/experience';
-import { ExperienceService } from 'src/app/services/experience.service';
+import { HotObservable } from 'rxjs/internal/testing/HotObservable';
+import { Skill } from 'src/app/models/skill';
+import { SkillService } from 'src/app/services/skill.service';
 
 @Component({
-  selector: 'app-edit-experience',
-  templateUrl: './edit-experience.component.html',
-  styleUrls: ['./edit-experience.component.css'],
+  selector: 'app-edit-skill',
+  templateUrl: './edit-skill.component.html',
+  styleUrls: ['./edit-skill.component.css']
 })
-export class EditExperienceComponent implements OnInit {
+export class EditSkillComponent implements OnInit {
 
-  experience: Experience = new Experience('companyName', 'position', 'description');
+  skill: Skill = new Skill('skill', 0);
 
   constructor(
-    private expServices: ExperienceService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
+    private skillServices: SkillService,
     private iziToast: Ng2IzitoastService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params["id"];
-    this.expServices.detail(id).subscribe(
+    this.skillServices.detail(id).subscribe(
       data => {
-        this.experience = data;
+        this.skill = data;
       },
       err => {
         this.iziToast.error({
@@ -38,10 +39,10 @@ export class EditExperienceComponent implements OnInit {
 
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params["id"];
-    this.expServices.update(id, this.experience).subscribe(
+    this.skillServices.update(id, this.skill).subscribe(
       data => {
         this.iziToast.success({
-          title: 'Experiencia actualizada',
+          title: 'Habilidad actualizada',
           message: data.message,
         });
         this.close();
@@ -60,5 +61,4 @@ export class EditExperienceComponent implements OnInit {
   close(){
     this.router.navigate(['/']);
   }
-
 }

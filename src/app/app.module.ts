@@ -10,7 +10,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EducationComponent } from './components/education/education.component';
 import { ExperienceComponent } from './components/experience/experience.component';
-import { SkillsComponent } from './components/skills/skills.component';
+import { SkillComponent } from './components/skill/skill.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
@@ -23,6 +23,8 @@ import { AddExperienceComponent } from './components/experience/add-experience/a
 import { EditExperienceComponent } from './components/experience/edit-experience/edit-experience.component';
 import { AddEducationComponent } from './components/education/add-education/add-education.component';
 import { EditEducationComponent } from './components/education/edit-education/edit-education.component';
+import { AddSkillComponent } from './components/skill/add-skill/add-skill.component';
+import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,15 @@ import { EditEducationComponent } from './components/education/edit-education/ed
     SidebarComponent,
     ExperienceComponent,
     EducationComponent,
-    SkillsComponent,
+    SkillComponent,
     LoginComponent,
     ProjectsComponent,
     AddExperienceComponent,
     EditExperienceComponent,
     AddEducationComponent,
-    EditEducationComponent
+    EditEducationComponent,
+    AddSkillComponent,
+    EditSkillComponent
   ],
   imports: [
     BrowserModule,
