@@ -11,7 +11,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
 })
 export class EditExperienceComponent implements OnInit {
 
-  experience: Experience = new Experience('companyName', 'position', 'description');
+  experience: Experience = new Experience('company', 'position', 'description');
 
   constructor(
     private expServices: ExperienceService,

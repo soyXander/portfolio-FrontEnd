@@ -52,7 +52,6 @@ export class EditSkillComponent implements OnInit {
           title: 'Error',
           message: err.message,
         });
-        this.close();
       }
     );
   }

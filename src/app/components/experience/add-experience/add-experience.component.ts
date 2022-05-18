@@ -20,7 +20,7 @@ export class AddExperienceComponent implements OnInit {
     private router: Router
     ) { }
 
-  companyName: string = '';
+  company: string = '';
   position: string = '';
   description: string = '';
 
@@ -28,7 +28,7 @@ export class AddExperienceComponent implements OnInit {
   }
 
   onCreate(): void {
-    const experience = new Experience(this.companyName, this.position, this.description);
+    const experience = new Experience(this.company, this.position, this.description);
     this.expService.save(experience).subscribe(
       data => {
         this.iziToast.success({

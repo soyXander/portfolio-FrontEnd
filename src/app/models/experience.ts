@@ -1,11 +1,11 @@
 export class Experience {
   id?: number;
-  companyName: string;
+  company: string;
   position: string;
   description: string;
 
-  constructor(companyName: string, position: string, description: string) {
-	  this.companyName = companyName;
+  constructor(company: string, position: string, description: string) {
+	  this.company = company;
 	  this.position = position;
 	  this.description = description;
   }

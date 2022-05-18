@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Skill } from 'src/app/models/skill';
@@ -32,7 +32,7 @@ export class AddSkillComponent implements OnInit {
           message: data.message,
           position: 'bottomRight'
         });
-        this.router.navigate(['/']);
+        this.close();
       },
       err => {
         this.iziToast.error({
@@ -40,10 +40,10 @@ export class AddSkillComponent implements OnInit {
           message: err.error.message,
           position: 'bottomRight'
         });
-        this.router.navigate(['/']);
     });
   }
 
+  @HostListener('window:keyup.esc')
   close(){
     this.router.navigate(['/']);
   }
