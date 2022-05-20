@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ng2IzitoastService } from 'ng2-izitoast';
-import { DataSharingService } from 'src/app/services/data-sharing.service';
 import { LoginService } from 'src/app/services/login.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -25,10 +24,9 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private tokenStorage: TokenStorageService,
     private router: Router,
-    private dataSharingService: DataSharingService,
     private iziToast: Ng2IzitoastService
   ) {
-    this.dataSharingService.isLoggedIn.subscribe(value => {
+    this.tokenStorage.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
     });
   }
@@ -49,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.dataSharingService.isLoggedIn.next(true);
+        this.tokenStorage.isLoggedIn.next(true);
         this.iziToast.success({
           title: 'Login',
           message: 'Login exitoso',

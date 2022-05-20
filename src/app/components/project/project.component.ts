@@ -4,6 +4,7 @@ import { faBriefcase, faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-project',
@@ -21,15 +22,29 @@ export class ProjectComponent implements OnInit, OnDestroy {
   faXmark = faXmark;
 
   projects: Project[] = [];
+  isLoggedIn: boolean;
+  isAdmin: boolean;
+  roles: string[] = [];
 
   constructor(
     private projectService: ProjectService,
-    private iziToast: Ng2IzitoastService,
-    private router: Router
+    private router: Router,
+    private tokenStorageService: TokenStorageService,
+    private iziToast: Ng2IzitoastService
   ) {
     this.navSuscription = this.router.events.subscribe((evt: any) => {
       if (evt instanceof NavigationEnd) {
         this.loadProject();
+      }
+    });
+    this.tokenStorageService.isLoggedIn.subscribe((data) => {
+      this.isLoggedIn = !!this.tokenStorageService.getToken();
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+        if (this.roles.includes('ADMIN')) {
+          this.isAdmin = true;
+        }
       }
     });
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { DataSharingService } from 'src/app/services/data-sharing.service';
+import { Ng2IzitoastService } from 'ng2-izitoast';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -17,21 +17,24 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private tokenStorage: TokenStorageService,
-    private dataSharingService: DataSharingService) {
-    this.dataSharingService.isLoggedIn.subscribe(value => {
-      this.isLoggedIn = value;
+    private router: Router,
+    private iziToast: Ng2IzitoastService) {
+      this.tokenStorage.isLoggedIn.subscribe(value => {
+        this.isLoggedIn = value;
     });
  }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorage.getToken();
-    if (this.isLoggedIn) {
-      const user = this.tokenStorage.getUser();
-    }
   }
 
   logout() {
     this.tokenStorage.signOut();
-    window.location.reload();
+    this.iziToast.show({
+      title: '¡Adios!',
+      message: 'Se cerro sesión correctamente',
+      color: 'orange'
+    });
+    this.tokenStorage.isLoggedIn.next(false);
   }
 }

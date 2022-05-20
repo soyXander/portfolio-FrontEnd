@@ -4,6 +4,7 @@ import { faGraduationCap, faPen, faPlus, faXmark } from '@fortawesome/free-solid
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Education } from 'src/app/models/education';
 import { EducationService } from 'src/app/services/education.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-education',
@@ -21,21 +22,35 @@ export class EducationComponent implements OnInit, OnDestroy {
   faXmark = faXmark;
 
   educations: Education[] = [];
+  isLoggedIn: boolean;
+  isAdmin: boolean;
+  roles: string[] = [];
 
   constructor(
     private eduService: EducationService,
-    private iziToast: Ng2IzitoastService,
-    private router: Router
+    private tokenStorageService: TokenStorageService,
+    private router: Router,
+    private iziToast: Ng2IzitoastService
   ) {
     this.navSuscription = this.router.events.subscribe((evt: any) => {
       if (evt instanceof NavigationEnd) {
         this.loadEdu();
       }
     });
+    this.tokenStorageService.isLoggedIn.subscribe((data) => {
+      this.isLoggedIn = !!this.tokenStorageService.getToken();
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+        if (this.roles.includes('ADMIN')) {
+          this.isAdmin = true;
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.loadEdu();
+    //this.loadEdu();
   }
 
   loadEdu(): void {
