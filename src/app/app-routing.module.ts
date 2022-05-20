@@ -4,12 +4,14 @@ import { AddEducationComponent } from './components/education/add-education/add-
 import { EditEducationComponent } from './components/education/edit-education/edit-education.component';
 import { AddExperienceComponent } from './components/experience/add-experience/add-experience.component';
 import { EditExperienceComponent } from './components/experience/edit-experience/edit-experience.component';
+import { LoginComponent } from './components/login/login.component';
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { AddSkillComponent } from './components/skill/add-skill/add-skill.component';
 import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.component';
 
 const routes: Routes = [
+  {path: 'login', component: LoginComponent},
   {path: 'experiencia/agregar', component: AddExperienceComponent},
   {path: 'experiencia/editar/:id', component: EditExperienceComponent},
   {path: 'educacion/agregar', component: AddEducationComponent},

@@ -39,7 +39,7 @@ export class AddProjectComponent implements OnInit {
 
     }
   @HostListener('window:keyup.esc')
-  close(){
+  close(): void {
     this.router.navigate(['/']);
   }
 }

@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Ng2IzitoastService } from 'ng2-izitoast';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
+import { LoginService } from 'src/app/services/login.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +12,64 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 })
 export class LoginComponent implements OnInit {
 
-  faUser = faUser;
+  form: any = {
+    username: null,
+    password: null
+  };
 
-  constructor() { }
+  isLoggedIn: boolean;
+  isLoginFailed = false;
+  roles: string[] = [];
 
-  test(){
-    alert("Aqui tendria que estar un modal para el inicio de sesión.");
+  constructor(
+    private loginService: LoginService,
+    private tokenStorage: TokenStorageService,
+    private router: Router,
+    private dataSharingService: DataSharingService,
+    private iziToast: Ng2IzitoastService
+  ) {
+    this.dataSharingService.isLoggedIn.subscribe(value => {
+      this.isLoggedIn = value;
+    });
   }
+
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
+  onSubmit() {
+    const { username, password } = this.form;
+    this.loginService.login(username, password).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.dataSharingService.isLoggedIn.next(true);
+        this.iziToast.success({
+          title: 'Login',
+          message: 'Login exitoso',
+          position: 'bottomRight'
+        });
+        this.close();
+      },
+      err => {
+        this.isLoginFailed = true;
+        this.iziToast.error({
+          title: 'Error',
+          message: 'err.message',
+          position: 'bottomRight'
+        });
+      }
+    );
+  }
+
+  @HostListener('window:keyup.esc')
+  close(): void {
+    this.router.navigate(['/']);
+  }
 }
