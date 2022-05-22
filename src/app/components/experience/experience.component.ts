@@ -44,9 +44,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       this.tokenStorageService.isLoggedIn.subscribe((data) => {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
         if (this.isLoggedIn) {
-          const user = this.tokenStorageService.getUser();
-          this.roles = user.roles;
-          if (this.roles.includes('ADMIN')) {
+          const user = this.tokenStorageService.getUsername();
+          this.roles = this.tokenStorageService.getAuthorities();
+          if (this.roles.includes('ROLE_ADMIN')) {
             this.isAdmin = true;
           }
         }

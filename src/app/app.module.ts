@@ -17,7 +17,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProjectComponent } from './components/project/project.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddExperienceComponent } from './components/experience/add-experience/add-experience.component';
 import { EditExperienceComponent } from './components/experience/edit-experience/edit-experience.component';
@@ -27,6 +27,7 @@ import { AddSkillComponent } from './components/skill/add-skill/add-skill.compon
 import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.component';
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,9 @@ import { EditProjectComponent } from './components/project/edit-project/edit-pro
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
