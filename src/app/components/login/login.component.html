@@ -45,12 +45,12 @@
             </label>
           </div>
           <div class="md:w-2/3">
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="password" placeholder="Contraseña"name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"/>
-            <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
-              <div *ngIf="password.errors['required']">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="password" placeholder="Contraseña" name="password" [(ngModel)]="form.password" required minlength="6"/>
+            <div class="alert alert-danger" role="alert" *ngIf="form.password.errors && f.submitted">
+              <div *ngIf="form.password.errors['required']">
                 ¡La contraseña es requerida!
               </div>
-              <div *ngIf="password.errors['minlength']">
+              <div *ngIf="form.password.errors['minlength']">
                 La contraseña debe tener al menos 6 caracteres
               </div>
             </div>

@@ -27,6 +27,7 @@ import { AddSkillComponent } from './components/skill/add-skill/add-skill.compon
 import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.component';
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
+import { httpInterceptorProviders } from './helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { EditProjectComponent } from './components/project/edit-project/edit-pro
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

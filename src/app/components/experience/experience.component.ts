@@ -27,7 +27,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   experiences: Experience[] = [];
   isLoggedIn: boolean;
-  isAdmin: boolean;
+  isAdmin = false;
   roles: string[] = [];
 
   constructor(
@@ -43,19 +43,15 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       });
       this.tokenStorageService.isLoggedIn.subscribe((data) => {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
-        if (this.isLoggedIn) {
-          const user = this.tokenStorageService.getUser();
-          this.roles = user.roles;
-          if (this.roles.includes('ADMIN')) {
-            this.isAdmin = true;
-          }
-        }
+        this.roles = this.tokenStorageService.getAuthorities();
+        if (this.isLoggedIn && this.roles.includes('ROLE_ADMIN'))
+          this.isAdmin = true;
+        else
+          this.isAdmin = false;
       });
     }
 
-  ngOnInit(): void {
-    //this.loadExp();
-  }
+  ngOnInit(): void {}
 
   loadExp(): void {
     this.expService.list().subscribe(
@@ -65,7 +61,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.error.message,
+          message: err.message,
           position: 'bottomRight'
         });
       }
@@ -85,7 +81,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.error.message,
+          message: err.message,
           position: 'bottomRight'
         });
       }

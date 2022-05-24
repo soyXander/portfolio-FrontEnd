@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private tokenStorage: TokenStorageService,
-    private router: Router,
     private iziToast: Ng2IzitoastService) {
       this.tokenStorage.isLoggedIn.subscribe(value => {
         this.isLoggedIn = value;
@@ -29,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.tokenStorage.signOut();
+    this.tokenStorage.logOut();
     this.iziToast.show({
       title: '¡Adios!',
       message: 'Se cerro sesión correctamente',

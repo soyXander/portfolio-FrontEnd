@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
+const TOKEN_KEY = 'authToken';
+const USERNAME_KEY = 'authUser';
+const AUTHORITIES_KEY = 'authAuthorities';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,11 @@ const USER_KEY = 'auth-user';
 export class TokenStorageService {
 
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  roles: Array<string>;
 
   constructor() { }
 
-  signOut(): void {
-    window.sessionStorage.clear();
-  }
-
-  public saveToken(token: string): void {
+  public setToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
@@ -26,16 +24,31 @@ export class TokenStorageService {
     return sessionStorage.getItem(TOKEN_KEY);
   }
 
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  public setUsername(username: string): void {
+    window.sessionStorage.removeItem(USERNAME_KEY);
+    window.sessionStorage.setItem(USERNAME_KEY, username);
   }
 
-  public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+  public getUsername(): string {
+    return sessionStorage.getItem(USERNAME_KEY);
+  }
+
+  public setAuthorities(authorities: string[]): void {
+    window.sessionStorage.removeItem(AUTHORITIES_KEY);
+    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
+  }
+
+  public getAuthorities(): string[] {
+    this.roles = [];
+    if (sessionStorage.getItem(AUTHORITIES_KEY)) {
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach((authority: { authority: string; }) => {
+        this.roles.push(authority.authority);
+      });
     }
-    return {};
+    return this.roles;
+  }
+
+  public logOut(): void {
+    window.sessionStorage.clear();
   }
 }

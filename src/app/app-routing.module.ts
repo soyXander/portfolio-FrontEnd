@@ -9,17 +9,18 @@ import { AddProjectComponent } from './components/project/add-project/add-projec
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { AddSkillComponent } from './components/skill/add-skill/add-skill.component';
 import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.component';
+import { GuardService as guard } from './services/guard.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'experiencia/agregar', component: AddExperienceComponent},
-  {path: 'experiencia/editar/:id', component: EditExperienceComponent},
-  {path: 'educacion/agregar', component: AddEducationComponent},
-  {path: 'educacion/editar/:id', component: EditEducationComponent},
-  {path: 'habilidad/agregar', component: AddSkillComponent},
-  {path: 'habilidad/editar/:id', component: EditSkillComponent},
-  {path: 'proyecto/agregar', component: AddProjectComponent},
-  {path: 'proyecto/editar/:id', component: EditProjectComponent},
+  {path: 'experiencia/agregar', component: AddExperienceComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
+  {path: 'experiencia/editar/:id', component: EditExperienceComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
+  {path: 'educacion/agregar', component: AddEducationComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
+  {path: 'educacion/editar/:id', component: EditEducationComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
+  {path: 'habilidad/agregar', component: AddSkillComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
+  {path: 'habilidad/editar/:id', component: EditSkillComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
+  {path: 'proyecto/agregar', component: AddProjectComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
+  {path: 'proyecto/editar/:id', component: EditProjectComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

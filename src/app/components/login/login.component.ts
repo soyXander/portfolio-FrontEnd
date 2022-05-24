@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ng2IzitoastService } from 'ng2-izitoast';
+import { LoginUser } from 'src/app/models/login-user';
 import { LoginService } from 'src/app/services/login.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -11,55 +12,55 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginUser: LoginUser;
   form: any = {
     username: null,
     password: null
   };
 
   isLoggedIn: boolean;
-  isLoginFailed = false;
   roles: string[] = [];
 
   constructor(
     private loginService: LoginService,
-    private tokenStorage: TokenStorageService,
+    private tokenStorageService: TokenStorageService,
     private router: Router,
     private iziToast: Ng2IzitoastService
   ) {
-    this.tokenStorage.isLoggedIn.subscribe(value => {
+    this.tokenStorageService.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
     });
   }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      this.roles = this.tokenStorageService.getAuthorities();
     }
   }
 
   onSubmit() {
     const { username, password } = this.form;
-    this.loginService.login(username, password).subscribe(
+    this.loginUser = new LoginUser(this.form.username, this.form.password);
+    this.loginService.login(this.loginUser).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
-        this.isLoginFailed = false;
+        this.tokenStorageService.setToken(data.token);
+        this.tokenStorageService.setUsername(data.username);
+        this.tokenStorageService.setAuthorities(data.authorities);
+        this.roles = data.authorities;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-        this.tokenStorage.isLoggedIn.next(true);
+        this.tokenStorageService.isLoggedIn.next(true);
         this.iziToast.success({
-          title: 'Login',
-          message: 'Login exitoso',
+          title: '¡Bienvenido!',
+          message: 'Hola ' + data.username + '!',
           position: 'bottomRight'
         });
         this.close();
       },
       err => {
-        this.isLoginFailed = true;
         this.iziToast.error({
           title: 'Error',
-          message: 'err.message',
+          message: 'Credenciales incorrectas',
           position: 'bottomRight'
         });
       }
