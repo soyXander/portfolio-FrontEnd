@@ -5,7 +5,6 @@ import { LoginUser } from '../models/login-user';
 import { JwtDTO } from '../models/jwt-dto';
 
 const AUTH_API = 'http://localhost:8080/auth/';
-
 @Injectable({
   providedIn: 'root'
 })

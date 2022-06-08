@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { faPen, faPlaceOfWorship, faPlus, faUserGear, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPlus, faUserGear, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Skill } from 'src/app/models/skill';
 import { SkillService } from 'src/app/services/skill.service';
@@ -11,7 +11,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent implements OnInit, OnDestroy {
+export class SkillComponent implements OnDestroy {
 
   navSubscription: any;
 
@@ -33,25 +33,16 @@ export class SkillComponent implements OnInit, OnDestroy {
     private iziToast: Ng2IzitoastService
     ) {
       this.navSubscription = this.router.events.subscribe((evt: any) => {
-        if (evt instanceof NavigationEnd) {
+        if (evt instanceof NavigationEnd)
           this.loadSkills();
-        }
       });
       this.tokenStorageService.isLoggedIn.subscribe((data) => {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
-        if (this.isLoggedIn) {
-          const user = this.tokenStorageService.getUser();
-          this.roles = user.roles;
-          if (this.roles.includes('ADMIN')) {
-            this.isAdmin = true;
-          }
-        }
+        this.roles = this.tokenStorageService.getAuthorities();
+        if (this.isLoggedIn && this.roles.includes('ROLE_ADMIN'))
+          this.isAdmin = true;
       });
     }
-
-  ngOnInit(): void {
-    //this.loadSkills();
-  }
 
   loadSkills(): void {
     this.skillService.list().subscribe(

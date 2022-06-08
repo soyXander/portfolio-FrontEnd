@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { faGraduationCap, faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
@@ -11,7 +11,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.css']
 })
-export class EducationComponent implements OnInit, OnDestroy {
+export class EducationComponent implements OnDestroy {
 
   navSuscription: any;
 
@@ -23,7 +23,7 @@ export class EducationComponent implements OnInit, OnDestroy {
 
   educations: Education[] = [];
   isLoggedIn: boolean;
-  isAdmin: boolean;
+  isAdmin = false;
   roles: string[] = [];
 
   constructor(
@@ -39,18 +39,10 @@ export class EducationComponent implements OnInit, OnDestroy {
     });
     this.tokenStorageService.isLoggedIn.subscribe((data) => {
       this.isLoggedIn = !!this.tokenStorageService.getToken();
-      if (this.isLoggedIn) {
-        const user = this.tokenStorageService.getUser();
-        this.roles = user.roles;
-        if (this.roles.includes('ADMIN')) {
-          this.isAdmin = true;
-        }
-      }
+      this.roles = this.tokenStorageService.getAuthorities();
+      if (this.isLoggedIn && this.roles.includes('ROLE_ADMIN'))
+        this.isAdmin = true;
     });
-  }
-
-  ngOnInit(): void {
-    //this.loadEdu();
   }
 
   loadEdu(): void {
