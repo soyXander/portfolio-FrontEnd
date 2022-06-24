@@ -20,8 +20,11 @@ export class ExperienceService {
     return this.httpClient.get<Experience>(this.experienceURL + `detalle/${id}`);
   }
 
-  public save(experience: Experience): Observable<any> {
-    return this.httpClient.post<any>(this.experienceURL + 'agregar', experience);
+  public save(experience: Experience, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('experience', JSON.stringify(experience));
+    formData.append('image', image);
+    return this.httpClient.post<any>(this.experienceURL + 'agregar', formData);
   }
 
   public update(id: number, experience: Experience): Observable<any> {

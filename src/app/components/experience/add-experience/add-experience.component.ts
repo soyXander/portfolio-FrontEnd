@@ -1,6 +1,5 @@
-import { Component, ElementRef, HostListener, Injectable, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Experience } from 'src/app/models/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
@@ -11,7 +10,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
   styleUrls: ['./add-experience.component.css']
 })
 
-export class AddExperienceComponent implements OnInit {
+export class AddExperienceComponent {
 
   //faPlus = faPlus;
   constructor(
@@ -23,13 +22,17 @@ export class AddExperienceComponent implements OnInit {
   company: string = '';
   position: string = '';
   description: string = '';
+  uploadedImage: File;
 
-  ngOnInit(): void {
+  uploadImage(event: any){
+    this.uploadedImage = event.target.files[0];
   }
 
   onCreate(): void {
     const experience = new Experience(this.company, this.position, this.description);
-    this.expService.save(experience).subscribe(
+    const image = this.uploadedImage;
+
+    this.expService.save(experience, image).subscribe(
       data => {
         this.iziToast.success({
           title: 'Experiencia creada',

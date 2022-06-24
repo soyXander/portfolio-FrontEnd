@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
-import {faPen, faPlus, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPlus, faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { NavigationEnd, Router } from '@angular/router';
