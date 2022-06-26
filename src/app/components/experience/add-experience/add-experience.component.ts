@@ -47,7 +47,6 @@ export class AddExperienceComponent {
           message: err.error.message,
           position: 'bottomRight'
       });
-      this.close();
     });
   }
 
