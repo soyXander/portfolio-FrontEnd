@@ -62,14 +62,14 @@
             </label>
           </div>
           <div class="md:w-2/3">
-            <input type="file" (change)="uploadImage($event)" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border	purple-500"/>
+            <input type="file" accept=".jpg, .jpeg, .png, .gif" (change)="uploadImage($event)" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"/>
           </div>
         </div>
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-full" >
             <label class="block text-gray-500 font-bold md:text-center mb-1 md:mb-0">
               Vista Previa
-              <img class="h-40 rounded w-full object-cover object-center mb-6" [src]="uploadedImage ? uploadImageUrl : 'https://dummyimage.com/720x400'" alt="content">
+              <img class="h-40 rounded w-full object-cover object-center mb-6" [src]="uploadedImage ? uploadImageUrl : 'https://dummyimage.com/720x400'">
             </label>
           </div>
        </div>
