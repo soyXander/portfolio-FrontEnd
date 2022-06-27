@@ -12,19 +12,17 @@ import { ExperienceService } from 'src/app/services/experience.service';
 
 export class AddExperienceComponent {
 
-  //faPlus = faPlus;
   constructor(
     private expService: ExperienceService,
     private iziToast: Ng2IzitoastService,
-    private router: Router
-    ) { }
+    private router: Router) { }
 
   company: string = '';
   position: string = '';
   description: string = '';
   uploadedImage: File;
 
-  uploadImage(event: any){
+  uploadImage(event: any) {
     this.uploadedImage = event.target.files[0];
   }
 
