@@ -17,13 +17,20 @@ export class AddExperienceComponent {
     private iziToast: Ng2IzitoastService,
     private router: Router) { }
 
-  company: string = '';
-  position: string = '';
-  description: string = '';
+  company: string;
+  position: string;
+  description: string;
   uploadedImage: File;
+  uploadImageUrl: string;
 
   uploadImage(event: any) {
     this.uploadedImage = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.uploadImageUrl = reader.result as string;
+    }
+    reader.readAsDataURL(this.uploadedImage);
   }
 
   onCreate(): void {

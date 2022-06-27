@@ -22,6 +22,7 @@ export class EditExperienceComponent implements OnInit {
   description: string;
   image: string;
   uploadedImage: File;
+  uploadImageUrl: string;
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params["id"];
@@ -44,6 +45,12 @@ export class EditExperienceComponent implements OnInit {
 
   updateImage(event: any) {
     this.uploadedImage = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.uploadImageUrl = reader.result as string;
+    }
+    reader.readAsDataURL(this.uploadedImage);
   }
 
   onUpdate(): void {
