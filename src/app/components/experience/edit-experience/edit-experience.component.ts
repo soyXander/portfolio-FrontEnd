@@ -38,7 +38,6 @@ export class EditExperienceComponent implements OnInit {
           title: 'Error',
           message: err.message,
         });
-        this.close();
       }
     );
   }
