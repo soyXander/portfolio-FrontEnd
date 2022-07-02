@@ -28,6 +28,7 @@ import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.com
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { httpInterceptorProviders } from './helpers/auth.interceptor';
+import { EditAboutMeComponent } from './components/about-me/edit-about-me/edit-about-me.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { httpInterceptorProviders } from './helpers/auth.interceptor';
     AddSkillComponent,
     EditSkillComponent,
     AddProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    EditAboutMeComponent
   ],
   imports: [
     BrowserModule,

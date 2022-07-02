@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditAboutMeComponent } from './components/about-me/edit-about-me/edit-about-me.component';
 import { AddEducationComponent } from './components/education/add-education/add-education.component';
 import { EditEducationComponent } from './components/education/edit-education/edit-education.component';
 import { AddExperienceComponent } from './components/experience/add-experience/add-experience.component';
@@ -13,6 +14,7 @@ import { GuardService as guard } from './services/guard.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'sobre-mi/editar', component: EditAboutMeComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
   {path: 'experiencia/agregar', component: AddExperienceComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
   {path: 'experiencia/editar/:id', component: EditExperienceComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
   {path: 'educacion/agregar', component: AddEducationComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
