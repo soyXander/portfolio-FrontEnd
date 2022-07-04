@@ -24,7 +24,7 @@ export class AboutMeComponent implements OnDestroy {
   isLoggedIn: boolean;
   isAdmin = false;
   roles: string[] = [];
-  profileImg: string;
+  profileImg: string = 'https://dummyimage.com/483x724';
 
   constructor(
     private userDetService: UserDetailsService,
