@@ -7,7 +7,7 @@ import { faBars, faX, faHouse, faUser, faStar, faGraduationCap, faUserGear, faBr
   styleUrls: ['./sidebar.component.css']
 })
 
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
 
   /**
    * Iconos
@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
   faPaperPlane = faPaperPlane;
 
 
-  constructor(private renderer: Renderer2, private elem: ElementRef){}
+  constructor(private elem: ElementRef) { }
 
   /**
    * Función para abrir y cerrar el menu cuando se clickea el toggle.
@@ -69,9 +69,5 @@ export class SidebarComponent implements OnInit {
       }
       list[0].className = 'list active';
     }
-  }
-
-  ngOnInit(): void {
-
   }
 }

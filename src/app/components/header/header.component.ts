@@ -16,24 +16,24 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
 
   constructor(
-    private tokenStorage: TokenStorageService,
+    private tokenStorageService: TokenStorageService,
     private iziToast: Ng2IzitoastService) {
-      this.tokenStorage.isLoggedIn.subscribe(value => {
+      this.tokenStorageService.isLoggedIn.subscribe(value => {
         this.isLoggedIn = value;
     });
  }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorage.getToken();
+    this.isLoggedIn = this.tokenStorageService.isLogged();
   }
 
   logout() {
-    this.tokenStorage.logOut();
+    this.tokenStorageService.logOut();
     this.iziToast.show({
       title: '¡Adios!',
       message: 'Se cerro sesión correctamente',
       color: 'orange'
     });
-    this.tokenStorage.isLoggedIn.next(false);
+    this.tokenStorageService.isLoggedIn.next(false);
   }
 }

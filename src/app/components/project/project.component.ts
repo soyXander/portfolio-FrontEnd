@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { faBriefcase, faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
@@ -11,9 +11,9 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
-export class ProjectComponent implements OnDestroy {
+export class ProjectComponent implements OnInit, OnDestroy {
 
-  navSuscription: any;
+  navSubscription: any;
 
   // Iconos
   faBriefcase = faBriefcase;
@@ -24,23 +24,21 @@ export class ProjectComponent implements OnDestroy {
   projects: Project[] = [];
   isLoggedIn: boolean;
   isAdmin: boolean;
-  roles: string[] = [];
 
   constructor(
     private projectService: ProjectService,
     private router: Router,
     private tokenStorageService: TokenStorageService,
-    private iziToast: Ng2IzitoastService
-  ) {
-    this.navSuscription = this.router.events.subscribe((evt: any) => {
+    private iziToast: Ng2IzitoastService) { }
+
+  ngOnInit(): void {
+    this.navSubscription = this.router.events.subscribe((evt: any) => {
       if (evt instanceof NavigationEnd)
         this.loadProject();
     });
     this.tokenStorageService.isLoggedIn.subscribe((data) => {
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
-      this.roles = this.tokenStorageService.getAuthorities();
-      if (this.isLoggedIn && this.roles.includes('ROLE_ADMIN'))
-        this.isAdmin = true;
+      this.isLoggedIn = this.tokenStorageService.isLogged();
+      this.isAdmin = this.tokenStorageService.isAdmin();
     });
   }
 
@@ -80,8 +78,8 @@ export class ProjectComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.navSuscription) {
-      this.navSuscription.unsubscribe();
+    if (this.navSubscription) {
+      this.navSubscription.unsubscribe();
     }
   }
 }

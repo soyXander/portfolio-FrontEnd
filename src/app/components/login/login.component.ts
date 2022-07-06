@@ -19,24 +19,19 @@ export class LoginComponent implements OnInit {
   };
 
   isLoggedIn: boolean;
-  roles: string[] = [];
 
   constructor(
     private loginService: LoginService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
     private iziToast: Ng2IzitoastService
-  ) {
-    this.tokenStorageService.isLoggedIn.subscribe(value => {
-      this.isLoggedIn = value;
-    });
-  }
+  ) { }
 
   ngOnInit(): void {
-    if (this.tokenStorageService.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorageService.getAuthorities();
-    }
+    this.tokenStorageService.isLoggedIn.subscribe(value => {
+      this.isLoggedIn = this.tokenStorageService.isLogged();
+    });
+
   }
 
   onSubmit() {
@@ -45,14 +40,11 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginUser).subscribe(
       data => {
         this.tokenStorageService.setToken(data.token);
-        this.tokenStorageService.setUsername(data.username);
-        this.tokenStorageService.setAuthorities(data.authorities);
-        this.roles = data.authorities;
         this.isLoggedIn = true;
         this.tokenStorageService.isLoggedIn.next(true);
         this.iziToast.success({
           title: '¡Bienvenido!',
-          message: 'Hola ' + data.username + '!',
+          message: 'Hola ' + this.tokenStorageService.getUsername() + '!',
           position: 'bottomRight'
         });
         this.close();

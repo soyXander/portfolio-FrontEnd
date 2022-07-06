@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { faGraduationCap, faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
@@ -11,9 +11,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.css']
 })
-export class EducationComponent implements OnDestroy {
-
-  navSuscription: any;
+export class EducationComponent implements OnInit, OnDestroy {
+  navSubscription: any;
 
   // Iconos
   faGraduationCap = faGraduationCap;
@@ -23,25 +22,23 @@ export class EducationComponent implements OnDestroy {
 
   educations: Education[] = [];
   isLoggedIn: boolean;
-  isAdmin = false;
-  roles: string[] = [];
+  isAdmin: boolean;
 
   constructor(
     private eduService: EducationService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
     private iziToast: Ng2IzitoastService
-  ) {
-    this.navSuscription = this.router.events.subscribe((evt: any) => {
-      if (evt instanceof NavigationEnd) {
+  ) { }
+
+  ngOnInit(): void {
+    this.navSubscription = this.router.events.subscribe((evt: any) => {
+      if (evt instanceof NavigationEnd)
         this.loadEdu();
-      }
     });
     this.tokenStorageService.isLoggedIn.subscribe((data) => {
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
-      this.roles = this.tokenStorageService.getAuthorities();
-      if (this.isLoggedIn && this.roles.includes('ROLE_ADMIN'))
-        this.isAdmin = true;
+      this.isLoggedIn = this.tokenStorageService.isLogged();
+      this.isAdmin = this.tokenStorageService.isAdmin();
     });
   }
 
@@ -81,8 +78,8 @@ export class EducationComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.navSuscription) {
-      this.navSuscription.unsubscribe();
+    if (this.navSubscription) {
+      this.navSubscription.unsubscribe();
     }
   }
 }

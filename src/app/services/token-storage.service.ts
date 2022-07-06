@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 const TOKEN_KEY = 'authToken';
-const USERNAME_KEY = 'authUser';
-const AUTHORITIES_KEY = 'authAuthorities';
 
 @Injectable({
   providedIn: 'root'
@@ -11,44 +10,51 @@ const AUTHORITIES_KEY = 'authAuthorities';
 export class TokenStorageService {
 
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  roles: Array<string>;
 
   constructor() { }
 
   public setToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.localStorage.removeItem(TOKEN_KEY);
+    window.localStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string {
-    return sessionStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(TOKEN_KEY);
   }
 
-  public setUsername(username: string): void {
-    window.sessionStorage.removeItem(USERNAME_KEY);
-    window.sessionStorage.setItem(USERNAME_KEY, username);
+  public isLogged(): boolean {
+    return this.getToken() !== null;
   }
 
   public getUsername(): string {
-    return sessionStorage.getItem(USERNAME_KEY);
-  }
-
-  public setAuthorities(authorities: string[]): void {
-    window.sessionStorage.removeItem(AUTHORITIES_KEY);
-    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
-  }
-
-  public getAuthorities(): string[] {
-    this.roles = [];
-    if (sessionStorage.getItem(AUTHORITIES_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach((authority: { authority: string; }) => {
-        this.roles.push(authority.authority);
-      });
+    if (!this.isLogged()) {
+      return null;
     }
-    return this.roles;
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const value = JSON.parse(payloadDecoded);
+    const username = value.sub;
+
+    return username;
+  }
+
+  public isAdmin(): boolean {
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const value = JSON.parse(payloadDecoded);
+    const roles = value.roles;
+    if (roles.includes('ROLE_ADMIN')) {
+      return true;
+    }
+    return false;
   }
 
   public logOut(): void {
-    window.sessionStorage.clear();
+    window.localStorage.clear();
   }
 }

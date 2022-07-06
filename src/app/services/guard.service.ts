@@ -16,14 +16,8 @@ export class GuardService {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const expectedRol = route.data['expectedRol'];
-    const roles = this.tokenStorageServices.getAuthorities();
-    this.rol = 'user';
-    roles.forEach(role => {
-      if (role === 'ROLE_ADMIN') {
-        this.rol = 'admin';
-      }
-    });
-    if (!this.tokenStorageServices.getToken() || expectedRol.indexOf(this.rol) === -1) {
+    this.rol = this.tokenStorageServices.isAdmin() ? 'admin': 'user';
+    if (!this.tokenStorageServices.isLogged() || expectedRol.indexOf(this.rol) < 0) {
       this.router.navigate(['/']);
       return false;
     }

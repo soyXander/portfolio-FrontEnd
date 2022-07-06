@@ -16,7 +16,6 @@ export class EditAboutMeComponent implements OnInit {
 
   constructor(
     private userDetServices: UserDetailsService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
     private iziToast: Ng2IzitoastService) { }
 
@@ -36,7 +35,6 @@ export class EditAboutMeComponent implements OnInit {
   uploadImageUrl: string;
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params["id"];
     this.userDetServices.view(1).subscribe(
       data => {
         this.firstName = data.firstName;
@@ -54,7 +52,7 @@ export class EditAboutMeComponent implements OnInit {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
           position: 'bottomRight',
         });
       }

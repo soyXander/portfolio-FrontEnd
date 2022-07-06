@@ -11,8 +11,8 @@ import { UserDetailsService } from 'src/app/services/user-details.service';
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.css']
 })
-export class AboutMeComponent implements OnDestroy {
-  navSuscription: any;
+export class AboutMeComponent implements OnInit, OnDestroy {
+  navSubscription: any;
 
   // Iconos
   faCamera = faCamera;
@@ -22,25 +22,23 @@ export class AboutMeComponent implements OnDestroy {
 
   userDetails: UserDetails;
   isLoggedIn: boolean;
-  isAdmin = false;
-  roles: string[] = [];
+  isAdmin: boolean;
   profileImg: string = 'https://dummyimage.com/483x724';
 
   constructor(
     private userDetService: UserDetailsService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
-    private iziToast: Ng2IzitoastService
-  ) {
-    this.navSuscription = this.router.events.subscribe((evt: any) => {
+    private iziToast: Ng2IzitoastService) { }
+
+  ngOnInit(): void {
+    this.navSubscription = this.router.events.subscribe((evt: any) => {
       if (evt instanceof NavigationEnd)
         this.loadUserDetails();
     });
     this.tokenStorageService.isLoggedIn.subscribe((data) => {
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
-      this.roles = this.tokenStorageService.getAuthorities();
-      if (this.isLoggedIn && this.roles.includes('ROLE_ADMIN'))
-        this.isAdmin = true;
+      this.isLoggedIn = this.tokenStorageService.isLogged();
+      this.isAdmin = this.tokenStorageService.isAdmin();
     });
   }
 
@@ -61,8 +59,8 @@ export class AboutMeComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.navSuscription) {
-      this.navSuscription.unsubscribe();
+    if (this.navSubscription) {
+      this.navSubscription.unsubscribe();
     }
   }
 }
