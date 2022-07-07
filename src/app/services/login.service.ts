@@ -11,8 +11,13 @@ const AUTH_API = 'http://localhost:8080/auth/';
 export class LoginService {
 
   constructor(private http: HttpClient) { }
+
   login(loginUser: LoginUser): Observable<JwtDTO> {
     return this.http.post<JwtDTO>(AUTH_API + 'login', loginUser);
+  }
+
+  refresh(jwtDTO: JwtDTO): Observable<JwtDTO> {
+    return this.http.post<JwtDTO>(AUTH_API + 'refresh', jwtDTO);
   }
 
   /* register(username: string, password: string): Observable<any> {
