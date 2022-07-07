@@ -35,7 +35,7 @@ export class AuthInterceptor implements HttpInterceptor {
       if (err.status === 401) {
         const dto: JwtDTO = new JwtDTO(this.tokenStorageService.getToken());
         return this.loginService.refresh(dto).pipe(concatMap((data: any) => {
-          //console.log('Actualizando token...');
+          console.log('Actualizando token...');
           this.tokenStorageService.setToken(data.token);
           intReq = this.addToken(req, data.token);
           return next.handle(intReq);
