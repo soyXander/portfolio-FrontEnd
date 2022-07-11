@@ -24,14 +24,14 @@ export class ExperienceService {
     const formData = new FormData();
     formData.append('experience', JSON.stringify(experience));
     formData.append('image', image);
-    return this.httpClient.post<any>(this.experienceURL + 'agregar', formData);
+    return this.httpClient.post<any>(this.experienceURL + 'guardar', formData);
   }
 
   public update(id: number, experience: Experience, image: File): Observable<any> {
     const formData = new FormData();
     formData.append('experience', JSON.stringify(experience));
     formData.append('image', image);
-    return this.httpClient.put<any>(this.experienceURL + `editar/${id}`, formData);
+    return this.httpClient.put<any>(this.experienceURL + `actualizar/${id}`, formData);
   }
 
   public delete(id: number): Observable<any> {
