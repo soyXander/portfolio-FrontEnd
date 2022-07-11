@@ -61,7 +61,7 @@ export class EditBannerComponent implements OnInit {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.erro.message,
+          message: err.error.message,
         });
       }
     );
