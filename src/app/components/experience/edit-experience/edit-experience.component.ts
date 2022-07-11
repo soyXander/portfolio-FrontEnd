@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Experience } from 'src/app/models/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
@@ -11,6 +12,8 @@ import { ExperienceService } from 'src/app/services/experience.service';
 })
 export class EditExperienceComponent implements OnInit {
 
+  faPen = faPen;
+
   constructor(
     private expServices: ExperienceService,
     private activatedRoute: ActivatedRoute,
@@ -20,7 +23,6 @@ export class EditExperienceComponent implements OnInit {
   company: string;
   position: string;
   description: string;
-  image: string;
   uploadedImage: File;
   uploadImageUrl: string;
 
@@ -31,7 +33,7 @@ export class EditExperienceComponent implements OnInit {
         this.company = data.company;
         this.position = data.position;
         this.description = data.description;
-        this.image = 'http://localhost:8080/image/ver/' + data.image.name; // Por el momento no se usa.
+        this.uploadImageUrl = 'http://localhost:8080/image/ver/' + data.image.name;
       },
       err => {
         this.iziToast.error({

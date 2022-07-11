@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Experience } from 'src/app/models/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
@@ -11,6 +12,8 @@ import { ExperienceService } from 'src/app/services/experience.service';
 })
 
 export class AddExperienceComponent {
+
+  faPen = faPen;
 
   constructor(
     private expService: ExperienceService,
