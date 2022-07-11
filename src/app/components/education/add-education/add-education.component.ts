@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
@@ -10,7 +10,7 @@ import { EducationService } from 'src/app/services/education.service';
   templateUrl: './add-education.component.html',
   styleUrls: ['./add-education.component.css']
 })
-export class AddEducationComponent implements OnInit {
+export class AddEducationComponent {
 
   // Icono
   faPlus = faPlus;
@@ -18,26 +18,36 @@ export class AddEducationComponent implements OnInit {
   constructor(
     private eduService: EducationService,
     private iziToast: Ng2IzitoastService,
-    private router: Router
-  ) { }
+    private router: Router) { }
 
-  institute: string = '';
-  certification: string = '';
-  description: string = '';
+  institute: string;
+  certification: string;
+  description: string;
+  uploadedImage: File;
+  uploadImageUrl: string;
 
-  ngOnInit(): void {
+  uploadImage(event: any) {
+    this.uploadedImage = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.uploadImageUrl = reader.result as string;
+    }
+    reader.readAsDataURL(this.uploadedImage);
   }
 
   onCreate(): void {
     const education = new Education(this.institute, this.certification, this.description);
-    this.eduService.save(education).subscribe(
+    const image = this.uploadedImage;
+
+    this.eduService.save(education, image).subscribe(
       data => {
         this.iziToast.success({
-          title: 'Educación creada',
+          title: 'Educación guardada',
           message: data.message,
           position: 'bottomRight'
         });
-        this.router.navigate(['/']);
+        this.close();
       },
       err => {
         this.iziToast.error({
@@ -45,7 +55,6 @@ export class AddEducationComponent implements OnInit {
           message: err.error.message,
           position: 'bottomRight'
         });
-        this.router.navigate(['/']);
       });
   }
 

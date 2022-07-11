@@ -13,6 +13,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
 
 export class AddExperienceComponent {
 
+  // Icono
   faPen = faPen;
 
   constructor(
@@ -43,7 +44,7 @@ export class AddExperienceComponent {
     this.expService.save(experience, image).subscribe(
       data => {
         this.iziToast.success({
-          title: 'Experiencia creada',
+          title: 'Experiencia guardada',
           message: data.message,
           position: 'bottomRight'
         });
