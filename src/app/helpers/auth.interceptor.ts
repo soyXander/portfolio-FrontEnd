@@ -32,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
     intReq = this.addToken(req, token);
 
     return next.handle(intReq).pipe(catchError((err: HttpErrorResponse) => {
-      if (err.status === 401) {
+      if (err.status === 401 || err.status === 403) {
         const dto: JwtDTO = new JwtDTO(this.tokenStorageService.getToken());
         return this.loginService.refresh(dto).pipe(concatMap((data: any) => {
           console.log('Actualizando token...');
@@ -40,7 +40,11 @@ export class AuthInterceptor implements HttpInterceptor {
           intReq = this.addToken(req, data.token);
           return next.handle(intReq);
         }));
-      } else {
+      }
+      else if (err.status === 400){
+        return throwError(err.message);
+      }
+      else {
         this.tokenStorageService.logOut();
         this.iziToast.error({
           title: 'Sesión caducada',
