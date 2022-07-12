@@ -12,7 +12,6 @@ import { EducationService } from 'src/app/services/education.service';
 })
 export class AddEducationComponent {
 
-  // Icono
   faPen = faPen;
 
   constructor(

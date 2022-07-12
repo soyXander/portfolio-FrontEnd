@@ -19,7 +19,7 @@ export class AddBannerComponent{
     private iziToast: Ng2IzitoastService) { }
 
   uploadedImage: File;
-  uploadImageUrl: string = 'https://dummyimage.com/1920x1080';
+  uploadImageUrl: string;
 
   uploadImage(event: any) {
     this.uploadedImage = event.target.files[0];
