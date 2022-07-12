@@ -19,11 +19,11 @@ export class SkillService {
   }
 
   public save(skill: any): Observable<any> {
-    return this.httpClient.post<any>(this.skillURL + 'agregar', skill);
+    return this.httpClient.post<any>(this.skillURL + 'guardar', skill);
   }
 
   public update(id: number, skill: any): Observable<any> {
-    return this.httpClient.put<any>(this.skillURL + `editar/${id}`, skill);
+    return this.httpClient.put<any>(this.skillURL + `actualizar/${id}`, skill);
   }
 
   public delete(id: number): Observable<any> {

@@ -12,7 +12,8 @@ import { SkillService } from 'src/app/services/skill.service';
 })
 export class EditSkillComponent implements OnInit {
 
-  skill: Skill = new Skill('skill', 0);
+  skill: string;
+  percentage: number;
 
   constructor(
     private skillServices: SkillService,
@@ -25,21 +26,22 @@ export class EditSkillComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params["id"];
     this.skillServices.detail(id).subscribe(
       data => {
-        this.skill = data;
+        this.skill = data.skill;
+        this.percentage = data.percentage;
       },
       err => {
         this.iziToast.error({
           title: 'Error',
           message: err.message,
         });
-        this.close();
       }
     );
   }
 
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params["id"];
-    this.skillServices.update(id, this.skill).subscribe(
+    const skill = new Skill(this.skill, this.percentage);
+    this.skillServices.update(id, skill).subscribe(
       data => {
         this.iziToast.success({
           title: 'Habilidad actualizada',
