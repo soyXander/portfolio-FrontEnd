@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Education } from 'src/app/models/education';
 import { EducationService } from 'src/app/services/education.service';
@@ -13,7 +13,7 @@ import { EducationService } from 'src/app/services/education.service';
 export class AddEducationComponent {
 
   // Icono
-  faPlus = faPlus;
+  faPen = faPen;
 
   constructor(
     private eduService: EducationService,
