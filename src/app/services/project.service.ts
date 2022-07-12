@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Project } from '../models/project';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,18 @@ export class ProjectService {
     return this.httpClient.get<any>(this.projectURL + `detalle/${id}`);
   }
 
-  public save(project: any): Observable<any> {
-    return this.httpClient.post<any>(this.projectURL + 'agregar', project);
+  public save(project: Project, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('project', JSON.stringify(project));
+    formData.append('image', image);
+    return this.httpClient.post<any>(this.projectURL + 'guardar', formData);
   }
 
-  public update(id: number, project: any): Observable<any> {
-    return this.httpClient.put<any>(this.projectURL + `editar/${id}`, project);
+  public update(id: number, project: Project, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('project', JSON.stringify(project));
+    formData.append('image', image);
+    return this.httpClient.put<any>(this.projectURL + `actualizar/${id}`, formData);
   }
 
   public delete(id: number): Observable<any> {

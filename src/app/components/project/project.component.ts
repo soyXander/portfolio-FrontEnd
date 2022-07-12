@@ -12,7 +12,6 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit, OnDestroy {
-
   navSubscription: any;
 
   // Iconos
