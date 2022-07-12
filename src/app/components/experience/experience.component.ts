@@ -28,8 +28,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     private expService: ExperienceService,
     private router: Router,
     private tokenStorageService: TokenStorageService,
-    private iziToast: Ng2IzitoastService
-    ) { }
+    private iziToast: Ng2IzitoastService) { }
 
   ngOnInit(): void {
     this.navSubscription = this.router.events.subscribe((evt: any) => {

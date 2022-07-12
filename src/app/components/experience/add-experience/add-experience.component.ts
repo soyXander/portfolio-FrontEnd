@@ -13,7 +13,6 @@ import { ExperienceService } from 'src/app/services/experience.service';
 
 export class AddExperienceComponent {
 
-  // Icono
   faPen = faPen;
 
   constructor(
