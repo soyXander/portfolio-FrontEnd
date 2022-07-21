@@ -31,6 +31,7 @@ import { httpInterceptorProviders } from './helpers/auth.interceptor';
 import { EditAboutMeComponent } from './components/about-me/edit-about-me/edit-about-me.component';
 import { AddBannerComponent } from './components/banner/add-banner/add-banner.component';
 import { EditBannerComponent } from './components/banner/edit-banner/edit-banner.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EditBannerComponent } from './components/banner/edit-banner/edit-banner
     EditProjectComponent,
     EditAboutMeComponent,
     EditBannerComponent,
-    AddBannerComponent
+    AddBannerComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
