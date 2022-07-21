@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div (mouseover)="activeOnHover()" (mouseout)="activeOffHover()" class="sidebar top-1/2 -translate-y-1/2">
   <ul>
     <li class="logo">
       <a href="#">
@@ -12,14 +12,6 @@
         <b></b>
         <span class="icon"><fa-icon [icon]="faHouse"></fa-icon></span>
         <span class="title">Inicio</span>
-      </a>
-    </li>
-    <li class="list">
-      <a href="#sobre-mi" (click)="markActive()">
-        <b></b>
-        <b></b>
-        <span class="icon"><fa-icon [icon]="faUser"></fa-icon></span>
-        <span class="title">Sobre mi</span>
       </a>
     </li>
     <li class="list">
@@ -64,9 +56,9 @@
     </li>
   </ul>
 </div>
-<div class="toggle">
+<!-- <div class="toggle">
   <a (click)="toggleAction()">
     <fa-icon [icon]="faBars" class="open"></fa-icon>
     <fa-icon [icon]="faX" class="close"></fa-icon>
   </a>
-</div>
+</div> -->

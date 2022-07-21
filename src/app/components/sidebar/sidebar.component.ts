@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { faBars, faX, faHouse, faUser, faStar, faGraduationCap, faUserGear, faBriefcase, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -25,19 +25,29 @@ export class SidebarComponent {
   faBriefcase = faBriefcase;
   faPaperPlane = faPaperPlane;
 
-
   constructor(private elem: ElementRef) { }
 
   /**
    * Función para abrir y cerrar el menu cuando se clickea el toggle.
    */
-  toggleAction(){
+
+/* toggleAction() {
     const menuToggle = this.elem.nativeElement.querySelector('.toggle');
     const sidebar = this.elem.nativeElement.querySelector('.sidebar')
-    menuToggle.onclick = function(){
+    menuToggle.onclick = function() {
       menuToggle.classList.toggle('active');
       sidebar.classList.toggle('active');
     }
+  } */
+
+  activeOnHover() {
+    const sidebar = this.elem.nativeElement.querySelector('.sidebar')
+    sidebar.classList.add('active');
+  }
+
+  activeOffHover() {
+    const sidebar = this.elem.nativeElement.querySelector('.sidebar')
+    sidebar.classList.remove('active');
   }
 
   /**
@@ -45,12 +55,12 @@ export class SidebarComponent {
    * click en el mismo mientras que en los demas elementos 'list'
    * se remueve la clase 'active'.
    */
-  markActive(){
+  markActive() {
     const list = this.elem.nativeElement.querySelectorAll('.list');
-    for(let i = 0; i < list.length; i++){
-      list[i].onclick = function(){
+    for(let i = 0; i < list.length; i++) {
+      list[i].onclick = function() {
         let j = 0;
-        while(j < list.length){
+        while(j < list.length) {
           list[j++].className = 'list';
         }
         list[i].className = 'list active';
@@ -62,9 +72,9 @@ export class SidebarComponent {
      * de list, en este caso 'Inicio'.
      */
     const logo = this.elem.nativeElement.querySelector('.logo');
-    logo.onclick = function(){
+    logo.onclick = function() {
       let i = 0;
-      while(i < list.length){
+      while(i < list.length) {
         list[i++].className = 'list';
       }
       list[0].className = 'list active';

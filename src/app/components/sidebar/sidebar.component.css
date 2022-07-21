@@ -4,11 +4,9 @@ img{
 /* Sidebar */
 .sidebar{
   position: fixed;
-  top: 10px;
   left: 10px;
-  bottom: 10px;
   width: 60px;
-  height: auto;
+  min-height: 55%;
   background: tomato;
   border-radius: 10px;
   border-left: 5px solid tomato;
@@ -29,6 +27,8 @@ img{
   width: 100%;
   padding-top: 20px;
   padding-left: 0px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .sidebar ul li{
   position: relative;
@@ -47,6 +47,8 @@ img{
   top: -20px;
   height: 20px;
   width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .sidebar ul li.active b:nth-child(1){
   display: block;
@@ -60,6 +62,8 @@ img{
   border-bottom-right-radius: 20px;
   width: 100%;
   height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .sidebar ul li b:nth-child(2){
   display: none;
@@ -68,6 +72,8 @@ img{
   bottom: -20px;
   height: 20px;
   width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .sidebar ul li.active b:nth-child(2){
   display: block;
@@ -81,6 +87,8 @@ img{
   border-top-right-radius: 20px;
   width: 100%;
   height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .sidebar ul li a{
   position: relative;
