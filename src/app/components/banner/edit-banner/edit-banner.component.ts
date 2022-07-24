@@ -12,13 +12,14 @@ import { BannerService } from 'src/app/services/banner.service';
 export class EditBannerComponent implements OnInit {
 
   faCamera = faCamera;
+
+  bannerImage: File;
+  bannerUrl: string = 'https://dummyimage.com/1920x1080';
+
   constructor(
     private bannerService: BannerService,
     private router: Router,
     private iziToast: Ng2IzitoastService) { }
-
-  bannerImage: File;
-  bannerUrl: string = 'https://dummyimage.com/1920x1080';
 
   ngOnInit(): void {
     this.bannerService.view(1).subscribe(

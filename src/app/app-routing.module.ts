@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddAboutMeComponent } from './components/about-me/add-about-me/add-about-me.component';
 import { EditAboutMeComponent } from './components/about-me/edit-about-me/edit-about-me.component';
 import { AddBannerComponent } from './components/banner/add-banner/add-banner.component';
 import { EditBannerComponent } from './components/banner/edit-banner/edit-banner.component';
@@ -16,7 +17,8 @@ import { GuardService as guard } from './services/guard.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'sobre-mi/editar', component: EditAboutMeComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
+  {path: 'sobre-mi/agregar', component: AddAboutMeComponent, canActivate: [guard], data: {expectedRol: ['admin']}},
+  {path: 'sobre-mi/editar/:id', component: EditAboutMeComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
   {path: 'banner/agregar', component: AddBannerComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
   {path: 'banner/editar', component: EditBannerComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
   {path: 'experiencia/agregar', component: AddExperienceComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},

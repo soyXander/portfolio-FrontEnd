@@ -12,6 +12,10 @@ export class UserDetailsService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public list(): Observable<UserDetails[]> {
+    return this.httpClient.get<UserDetails[]>(this.userDetailsURL + 'lista');
+  }
+
   public view(id: number): Observable<UserDetails> {
     return this.httpClient.get<UserDetails>(this.userDetailsURL + `ver/${id}`);
   }

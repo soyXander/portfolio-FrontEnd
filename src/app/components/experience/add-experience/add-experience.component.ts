@@ -59,7 +59,7 @@ export class AddExperienceComponent {
   }
 
   @HostListener('window:keyup.esc')
-  close(){
+  close() {
     this.router.navigate(['/']);
   }
 

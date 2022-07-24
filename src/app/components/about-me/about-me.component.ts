@@ -20,7 +20,7 @@ export class AboutMeComponent implements OnInit, OnDestroy {
   faPlus = faPlus;
   faXmark = faXmark;
 
-  userDetails: UserDetails;
+  userDetails: UserDetails[];
   isLoggedIn: boolean;
   isAdmin: boolean;
   profileImg: string = 'https://dummyimage.com/483x724';
@@ -43,15 +43,17 @@ export class AboutMeComponent implements OnInit, OnDestroy {
   }
 
   loadUserDetails(): void {
-    this.userDetService.view(1).subscribe(
+    this.userDetService.list().subscribe(
       data => {
         this.userDetails = data;
-        this.profileImg = 'http://localhost:8080/image/ver/' + data.image.name;
+        if (data != null && this.userDetails[0].image != null) {
+          this.profileImg = 'http://localhost:8080/image/ver/' + this.userDetails[0].image.name;
+        }
       },
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
           position: 'bottomRight'
         });
       }

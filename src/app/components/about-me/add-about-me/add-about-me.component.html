@@ -14,7 +14,7 @@
     <div class="modal-content py-4 text-left px-6">
       <!--Title-->
       <div class="flex justify-between items-center pb-3">
-        <p class="text-2xl font-bold">Editar Sobre Mi</p>
+        <p class="text-2xl font-bold">Agregar Sobre Mi</p>
         <div (click)="close()" class="cursor-pointer z-50">
           <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
             <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
@@ -23,7 +23,7 @@
       </div>
 
       <!--Body-->
-      <form class="w-full max-w-sm" (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+      <form class="w-full max-w-sm" (ngSubmit)="onCreate()" novalidate #f="ngForm">
         <div class="md:block md:items-center mb-2">
           <div class="md:w-full" >
             <label class="block text-gray-500 font-bold md:text-center mb-1 md:mb-0">
@@ -104,14 +104,14 @@
               Imagen de perfil
             </label>
             <div class="w-full h-40 relative cursor-pointer" (click)="fileInput.click()">
-              <img class="absolute w-full h-40 rounded object-cover object-center" [src]="uploadImageUrl">
-              <div class="absolute rounded opacity-0 hover:opacity-100 hover:bg-black/50 active:bg-black/70 duration-300 inset-0 flex justify-center items-center text-3xl text-white"><fa-icon [icon]="faPen" class="text-white"></fa-icon></div>
-              <input #fileInput type="file" accept=".jpg, .jpeg, .png, .gif" (change)="updateImage($event)" class="hidden"/>
+              <img class="absolute w-full h-40 rounded object-cover object-center" [src]="uploadedImage ? uploadImageUrl : 'https://dummyimage.com/720x400'">
+              <div class="absolute rounded opacity-0 hover:opacity-100 hover:bg-black/50 active:bg-black/70 duration-300 inset-0 flex justify-center items-center text-3xl text-white"><fa-icon [icon]="faCamera" class="text-white"></fa-icon></div>
+              <input #fileInput type="file" accept=".jpg, .jpeg, .png, .gif" (change)="uploadImage($event)" class="hidden"/>
             </div>
           </div>
        </div>
         <div class="flex justify-end pt-2">
-          <button class="px-4 p-3 rounded-lg text-white bg-tomato hover:bg-tomato-600 active:bg-tomato-700 mr-2">Actualizar</button>
+          <button class="px-4 p-3 rounded-lg text-white bg-tomato hover:bg-tomato-600 active:bg-tomato-700 mr-2">Agregar</button>
           <button class="px-4 p-3 rounded-lg text-white bg-gray-400 hover:bg-gray-500 active:bg-gray-600" type="reset" (click)="close()">Cancelar</button>
         </div>
       </form>

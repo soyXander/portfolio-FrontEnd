@@ -16,6 +16,7 @@ export class EditAboutMeComponent implements OnInit {
 
   constructor(
     private userDetServices: UserDetailsService,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private iziToast: Ng2IzitoastService) { }
 
@@ -32,17 +33,20 @@ export class EditAboutMeComponent implements OnInit {
   twitterId: string;
 
   uploadedImage: File;
-  uploadImageUrl: string;
+  uploadImageUrl: string = 'https://dummyimage.com/483x724';
 
   ngOnInit(): void {
-    this.userDetServices.view(1).subscribe(
+    const id = this.activatedRoute.snapshot.params["id"];
+    this.userDetServices.view(id).subscribe(
       data => {
         this.firstName = data.firstName;
         this.lastName = data.lastName;
         this.location = data.location;
         this.title = data.title;
         this.description = data.description;
-        this.profileImg = 'http://localhost:8080/image/ver/' + data.image.name;
+        if (data != null && data.image != null) {
+          this.profileImg = 'http://localhost:8080/image/ver/' + data.image.name;
+        }
         this.facebookId = data.facebookId;
         this.instagramId = data.instagramId;
         this.githubId = data.githubId;
@@ -70,10 +74,11 @@ export class EditAboutMeComponent implements OnInit {
   }
 
   onUpdate(): void {
+    const id = this.activatedRoute.snapshot.params["id"];
     const userDetails = new UserDetails(this.firstName, this.lastName, this.location, this.title, this.description, this.facebookId, this.instagramId, this.githubId, this.linkedinId, this.twitterId);
     const image = this.uploadedImage;
 
-    this.userDetServices.update(1, userDetails, image).subscribe(
+    this.userDetServices.update(id, userDetails, image).subscribe(
       data => {
         this.iziToast.success({
           title: 'Sobre mi actualizado',

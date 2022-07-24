@@ -28,6 +28,7 @@ import { EditSkillComponent } from './components/skill/edit-skill/edit-skill.com
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { httpInterceptorProviders } from './helpers/auth.interceptor';
+import { AddAboutMeComponent } from './components/about-me/add-about-me/add-about-me.component';
 import { EditAboutMeComponent } from './components/about-me/edit-about-me/edit-about-me.component';
 import { AddBannerComponent } from './components/banner/add-banner/add-banner.component';
 import { EditBannerComponent } from './components/banner/edit-banner/edit-banner.component';
@@ -53,6 +54,7 @@ import { FooterComponent } from './components/footer/footer.component';
     EditSkillComponent,
     AddProjectComponent,
     EditProjectComponent,
+    AddAboutMeComponent,
     EditAboutMeComponent,
     EditBannerComponent,
     AddBannerComponent,
