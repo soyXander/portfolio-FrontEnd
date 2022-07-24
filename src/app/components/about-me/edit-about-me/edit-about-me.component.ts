@@ -14,18 +14,11 @@ export class EditAboutMeComponent implements OnInit {
 
   faPen = faPen;
 
-  constructor(
-    private userDetServices: UserDetailsService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private iziToast: Ng2IzitoastService) { }
-
   firstName: string;
   lastName: string;
   location: string;
   title: string;
   description: string;
-  profileImg: string;
   facebookId: string;
   instagramId: string;
   githubId: string;
@@ -33,7 +26,13 @@ export class EditAboutMeComponent implements OnInit {
   twitterId: string;
 
   uploadedImage: File;
-  uploadImageUrl: string = 'https://dummyimage.com/483x724';
+  profileImg: string = 'https://dummyimage.com/483x724';
+
+  constructor(
+    private userDetServices: UserDetailsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private iziToast: Ng2IzitoastService) { }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params["id"];
@@ -68,7 +67,7 @@ export class EditAboutMeComponent implements OnInit {
 
     const reader = new FileReader();
     reader.onload = () => {
-      this.uploadImageUrl = reader.result as string;
+      this.profileImg = reader.result as string;
     }
     reader.readAsDataURL(this.uploadedImage);
   }

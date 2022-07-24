@@ -104,7 +104,7 @@
               Imagen de perfil
             </label>
             <div class="w-full h-40 relative cursor-pointer" (click)="fileInput.click()">
-              <img class="absolute w-full h-40 rounded object-cover object-center" [src]="uploadedImage ? uploadImageUrl : 'https://dummyimage.com/720x400'">
+              <img class="absolute w-full h-40 rounded object-cover object-center" [src]="profileImg">
               <div class="absolute rounded opacity-0 hover:opacity-100 hover:bg-black/50 active:bg-black/70 duration-300 inset-0 flex justify-center items-center text-3xl text-white"><fa-icon [icon]="faCamera" class="text-white"></fa-icon></div>
               <input #fileInput type="file" accept=".jpg, .jpeg, .png, .gif" (change)="uploadImage($event)" class="hidden"/>
             </div>

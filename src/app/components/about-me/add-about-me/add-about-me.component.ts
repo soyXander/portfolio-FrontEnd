@@ -31,14 +31,14 @@ export class AddAboutMeComponent {
   twitterId: string;
 
   uploadedImage: File;
-  uploadImageUrl: string = 'https://dummyimage.com/720x400';
+  profileImg: string = 'https://dummyimage.com/720x400';
 
   uploadImage(event: any) {
     this.uploadedImage = event.target.files[0];
 
     const reader = new FileReader();
     reader.onload = () => {
-      this.uploadImageUrl = reader.result as string;
+      this.profileImg = reader.result as string;
     }
     reader.readAsDataURL(this.uploadedImage);
   }
