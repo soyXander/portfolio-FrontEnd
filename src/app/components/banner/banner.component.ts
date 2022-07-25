@@ -22,7 +22,8 @@ export class BannerComponent implements OnInit, OnDestroy {
   constructor(
     private bannerService: BannerService,
     private tokenStorageService: TokenStorageService,
-    private router: Router) { }
+    private router: Router,
+    private iziToast: Ng2IzitoastService) { }
 
   ngOnInit(): void {
     this.navSubscription = this.router.events.subscribe((evt: any) => {
@@ -36,11 +37,18 @@ export class BannerComponent implements OnInit, OnDestroy {
   }
 
   loadBanner(): void {
-    this.bannerService.view(1).subscribe(
+    this.bannerService.list().subscribe(
       data => {
-        if (data != null) {
-          this.bannerUrl = 'http://localhost:8080/image/ver/' + data.image.name;
+        if (data[0]?.image != null) {
+          this.bannerUrl = 'http://localhost:8080/image/ver/' + data[0]?.image.name;
         }
+      },
+      err => {
+        this.iziToast.error({
+          title: 'Error al cargar el banner',
+          message: err.error.message,
+          position: 'bottomRight',
+        });
       }
     );
   }
