@@ -42,7 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
         }));
       }
       else if (err.status === 400){
-        return throwError(err.message);
+        return throwError(err);
       }
       else {
         this.tokenStorageService.logOut();
@@ -53,7 +53,7 @@ export class AuthInterceptor implements HttpInterceptor {
         });
         this.tokenStorageService.isLoggedIn.next(false);
         this.router.navigate(['/']);
-        return throwError(err.message);
+        return throwError(err);
       }
     }));
   }

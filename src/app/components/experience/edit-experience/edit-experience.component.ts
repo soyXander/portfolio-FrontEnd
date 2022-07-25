@@ -38,7 +38,7 @@ export class EditExperienceComponent implements OnInit {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
         });
       }
     );

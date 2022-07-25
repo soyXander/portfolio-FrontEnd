@@ -49,7 +49,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
           position: 'bottomRight'
         });
       }

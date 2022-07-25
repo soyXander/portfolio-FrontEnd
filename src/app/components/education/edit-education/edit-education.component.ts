@@ -38,7 +38,7 @@ export class EditEducationComponent implements OnInit {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
         });
         this.router.navigate(['/']);
       }
@@ -70,7 +70,7 @@ export class EditEducationComponent implements OnInit {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
         });
         this.router.navigate(['/']);
       }

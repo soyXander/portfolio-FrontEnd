@@ -32,7 +32,7 @@ export class EditSkillComponent implements OnInit {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
         });
       }
     );
@@ -52,7 +52,7 @@ export class EditSkillComponent implements OnInit {
       err => {
         this.iziToast.error({
           title: 'Error',
-          message: err.message,
+          message: err.error.message,
         });
       }
     );
