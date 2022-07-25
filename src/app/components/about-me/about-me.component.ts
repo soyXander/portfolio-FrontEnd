@@ -46,7 +46,7 @@ export class AboutMeComponent implements OnInit, OnDestroy {
     this.userDetService.list().subscribe(
       data => {
         this.userDetails = data;
-        if (data != null && this.userDetails[0].image != null) {
+        if (data != null && data[0]?.image != null) {
           this.profileImg = 'http://localhost:8080/image/ver/' + this.userDetails[0].image.name;
         }
       },
