@@ -1,0 +1,32 @@
+<section class="text-gray-900 body-font" id="contacto" #contacto>
+  <div class="py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-black"><fa-icon [icon]=""></fa-icon> Contacto</h1>
+        <div class="h-1 w-20 bg-tomato rounded"></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="flex justify-center flex-wrap -m-4">
+      <a></a>
+      <!-- Formulario de contacto -->
+      <!-- <div class="p-4 w-1/2">
+        <div class="bg-white rounded-lg shadow-lg hover:shadow-tomato-500 duration-700 p-8 flex flex-col my-6 h-80">
+          <a class="p-1 mb-3 border-2" href="">Información de contacto</a>
+          <a class="p-1 mb-3 border-2" href="">asad</a>
+          <a class="p-1 mb-3 border-2" href="">asad</a>
+          <a class="p-1 mb-3 border-2" href="">asad</a>
+          <a class="p-1 mb-3 border-2" href="">asad</a>
+        </div>
+      </div> -->
+      <div class="p-4 w-full">
+        <form (ngSubmit)="onSubmit()" class="bg-white rounded-lg shadow-lg hover:shadow-tomato-500 duration-700 p-8 flex flex-col my-6">
+          <input type="text" placeholder="Nombre" name="name" [(ngModel)]="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full p-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500">
+          <input type="email" placeholder="Email" name="email" [(ngModel)]="email" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full p-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500">
+          <textarea placeholder="Mensaje" name="message" [(ngModel)]="message" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full p-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500"></textarea>
+          <button class="text-white bg-tomato hover:bg-tomato-600 active:bg-tomato-700 p-3 mb-3 rounded-lg">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
