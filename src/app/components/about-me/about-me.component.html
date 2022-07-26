@@ -33,7 +33,7 @@
 			<p *ngIf="userDetails" class="pt-8 text-sm">{{userDetails[0]?.description}}</p>
 
 			<div class="pt-12 pb-8">
-				<button class="bg-tomato hover:bg-tomato-600 active:bg-tomato-700 text-white font-bold py-2 px-4 rounded-full">
+				<button (click)="onClick('contacto')" class="bg-tomato hover:bg-tomato-600 active:bg-tomato-700 text-white font-bold py-2 px-4 rounded-full">
 				  Contacto
 				</button>
       </div>

@@ -1,13 +1,13 @@
-<div (mouseover)="activeOnHover()" (mouseout)="activeOffHover()" class="sidebar top-1/2 -translate-y-1/2">
+<div (mouseover)="activeOnHover()" (mouseout)="activeOffHover()" class="sidebar top-1/2 -translate-y-1/2 cursor-default">
   <ul>
     <li class="logo">
-      <a href="#">
+      <a (click)="onClick('inicio')">
         <img src="../../../../assets/images/AP-Logo.png" alt="Argentina Programa - #YoProgramo">
         <span class="title"> </span>
       </a>
     </li>
     <li class="list active">
-      <a href="#" (click)="markActive()">
+      <a (click)="onClick('inicio'); markActive()">
         <b></b>
         <b></b>
         <span class="icon"><fa-icon [icon]="faHouse"></fa-icon></span>
@@ -15,7 +15,7 @@
       </a>
     </li>
     <li class="list">
-      <a href="#experiencia" (click)="markActive()">
+      <a (click)="onClick('experiencia'); markActive()">
         <b></b>
         <b></b>
         <span class="icon"><fa-icon [icon]="faStar"></fa-icon></span>
@@ -23,7 +23,7 @@
       </a>
     </li>
     <li class="list">
-      <a href="#educacion" (click)="markActive()">
+      <a (click)="onClick('educacion'); markActive()">
         <b></b>
         <b></b>
         <span class="icon"><fa-icon [icon]="faGraduationCap"></fa-icon></span>
@@ -31,7 +31,7 @@
       </a>
     </li>
     <li class="list">
-      <a href="#habilidades" (click)="markActive()">
+      <a (click)="onClick('habilidades'); markActive()">
         <b></b>
         <b></b>
         <span class="icon"><fa-icon [icon]="faUserGear"></fa-icon></span>
@@ -39,7 +39,7 @@
       </a>
     </li>
     <li class="list">
-      <a href="#proyectos" (click)="markActive()">
+      <a (click)="onClick('proyectos'); markActive()">
         <b></b>
         <b></b>
         <span class="icon"><fa-icon [icon]="faBriefcase"></fa-icon></span>
@@ -47,7 +47,7 @@
       </a>
     </li>
     <li class="list">
-      <a href="#contacto" (click)="markActive()">
+      <a (click)="onClick('contacto'); markActive()">
         <b></b>
         <b></b>
         <span class="icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span>

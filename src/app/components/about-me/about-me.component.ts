@@ -5,6 +5,7 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 import { UserDetails } from 'src/app/models/user-details';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserDetailsService } from 'src/app/services/user-details.service';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-about-me',
@@ -29,7 +30,8 @@ export class AboutMeComponent implements OnInit, OnDestroy {
     private userDetService: UserDetailsService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
-    private iziToast: Ng2IzitoastService) { }
+    private iziToast: Ng2IzitoastService,
+    private sidebar: SidebarComponent) { }
 
   ngOnInit(): void {
     this.navSubscription = this.router.events.subscribe((evt: any) => {
@@ -60,9 +62,14 @@ export class AboutMeComponent implements OnInit, OnDestroy {
     );
   }
 
+  onClick(elemId: string): void {
+    this.sidebar.onClick(elemId);
+  }
+
   ngOnDestroy(): void {
     if (this.navSubscription) {
       this.navSubscription.unsubscribe();
     }
   }
+
 }

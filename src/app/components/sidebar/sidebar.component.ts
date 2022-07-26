@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef } from '@angular/core';
 import { faBars, faX, faHouse, faUser, faStar, faGraduationCap, faUserGear, faBriefcase, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,7 +26,9 @@ export class SidebarComponent {
   faBriefcase = faBriefcase;
   faPaperPlane = faPaperPlane;
 
-  constructor(private elem: ElementRef) { }
+  constructor(
+    private elem: ElementRef,
+    private viewportScroller: ViewportScroller) { }
 
   /**
    * Función para abrir y cerrar el menu cuando se clickea el toggle.
@@ -79,5 +82,9 @@ export class SidebarComponent {
       }
       list[0].className = 'list active';
     }
+  }
+
+  public onClick(elemId: string): void {
+    this.viewportScroller.scrollToAnchor(elemId);
   }
 }

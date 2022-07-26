@@ -6,7 +6,7 @@ img{
   position: fixed;
   left: 10px;
   width: 60px;
-  min-height: 55%;
+  min-height: 50%;
   background: tomato;
   border-radius: 10px;
   border-left: 5px solid tomato;

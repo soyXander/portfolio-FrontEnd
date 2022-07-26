@@ -73,7 +73,7 @@ import { ContactComponent } from './components/contact/contact.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, SidebarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
