@@ -1,11 +1,11 @@
-<div class="fixed flex justify-center items-center top-5 right-5 w-40 h-12 rounded-lg cursor-pointer text-white uppercase bg-tomato hover:bg-tomato-600 active:bg-tomato-700" *ngIf="isLoggedIn; else login">
+<div class="fixed flex justify-center items-center top-5 right-5 w-40 h-12 rounded-lg cursor-pointer text-white uppercase bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500" *ngIf="isLoggedIn; else login">
   <a (click)="logout()">
     <span><fa-icon [icon]="faUser" class="pr-3"></fa-icon></span>
     <span class="whitespace-normal">Cerrar Sesión</span>
   </a>
 </div>
 <ng-template #login>
-  <div class="fixed flex justify-center items-center top-5 right-5 w-40 h-12 rounded-lg cursor-pointer text-white uppercase bg-tomato hover:bg-tomato-600 active:bg-tomato-700" *ngIf="!isLoggedIn">
+  <div class="fixed flex justify-center items-center top-5 right-5 w-40 h-12 rounded-lg cursor-pointer text-white uppercase bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500" *ngIf="!isLoggedIn">
     <a routerLink="/login">
       <span><fa-icon [icon]="faUser" class="pr-3"></fa-icon></span>
       <span class="whitespace-normal">Iniciar Sesión</span>

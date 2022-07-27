@@ -1,9 +1,9 @@
 <div id="inicio" class="h-screen bg-cover relative" [style]="{'background-image': 'url(' + bannerUrl +')'}">
   <app-about-me></app-about-me>
   <div *ngIf="isLoggedIn && isAdmin">
-    <a *ngIf="bannerUrl == 'https://dummyimage.com/1920x1080'; else editar" routerLink="banner/agregar" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 h-10 w-44 flex justify-center items-center rounded-lg bg-tomato hover:bg-tomato-600 active:bg-tomato-700 text-white font-medium uppercase cursor-pointer"><fa-icon [icon]="faCamera" class="pr-3"></fa-icon>Agregar banner</a>
+    <a *ngIf="bannerUrl == 'https://dummyimage.com/1920x1080'; else editar" routerLink="banner/agregar" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 h-10 w-44 flex justify-center items-center rounded-lg bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500 text-white font-medium uppercase cursor-pointer"><fa-icon [icon]="faCamera" class="pr-3"></fa-icon>Agregar banner</a>
     <ng-template #editar>
-      <a routerLink="banner/editar" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 h-10 w-44 flex justify-center items-center rounded-lg bg-tomato hover:bg-tomato-600 active:bg-tomato-700 text-white font-medium uppercase cursor-pointer"><fa-icon [icon]="faCamera" class="pr-3"></fa-icon>Editar banner</a>
+      <a routerLink="banner/editar" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 h-10 w-44 flex justify-center items-center rounded-lg bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500 text-white font-medium uppercase cursor-pointer"><fa-icon [icon]="faCamera" class="pr-3"></fa-icon>Editar banner</a>
     </ng-template>
   </div>
 </div>

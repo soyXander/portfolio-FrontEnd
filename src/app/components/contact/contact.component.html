@@ -20,11 +20,11 @@
         </div>
       </div> -->
       <div class="p-4 w-full">
-        <form (ngSubmit)="onSubmit()" class="bg-white rounded-lg shadow-lg hover:shadow-tomato-500 duration-700 p-8 flex flex-col my-6">
+        <form (ngSubmit)="onSubmit()" class="bg-white rounded-lg shadow-xl hover:shadow-tomato-500 duration-700 p-8 flex flex-col my-6">
           <input type="text" placeholder="Nombre" name="name" [(ngModel)]="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full p-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500">
           <input type="email" placeholder="Email" name="email" [(ngModel)]="email" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full p-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500">
           <textarea placeholder="Mensaje" name="message" [(ngModel)]="message" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full p-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500"></textarea>
-          <button class="text-white bg-tomato hover:bg-tomato-600 active:bg-tomato-700 p-3 mb-3 rounded-lg">Enviar</button>
+          <button class="text-white bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500 p-3 mb-3 rounded-lg">Enviar</button>
         </form>
       </div>
     </div>

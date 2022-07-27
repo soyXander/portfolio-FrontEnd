@@ -31,13 +31,13 @@
           </circle-progress>
         </div>
         <div *ngIf="isLoggedIn && isAdmin" class="flex">
-          <div class="w-1/2 mr-3 mt-2 h-10 flex justify-center items-center bg-tomato hover:bg-tomato-600 active:bg-tomato-700 rounded-xl cursor-pointer" routerLink="/habilidad/editar/{{skill.id}}" >
+          <div class="w-1/2 mr-3 mt-2 h-10 flex justify-center items-center bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500 rounded-xl cursor-pointer" routerLink="/habilidad/editar/{{skill.id}}" >
             <a>
               <span class="pr-2"><fa-icon [icon]="faPen" class="text-white"></fa-icon></span>
               <span class="uppercase text-white">Editar</span>
             </a>
           </div>
-          <div class="w-1/2 mt-2 h-10 flex justify-center items-center bg-tomato hover:bg-tomato-600 active:bg-tomato-700 rounded-xl cursor-pointer" (click)="delete(skill.id)" >
+          <div class="w-1/2 mt-2 h-10 flex justify-center items-center bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500 rounded-xl cursor-pointer" (click)="delete(skill.id)" >
             <a>
               <span class="pr-2"><fa-icon [icon]="faXmark" class="text-white"></fa-icon></span>
               <span class="uppercase text-white">Borrar</span>
