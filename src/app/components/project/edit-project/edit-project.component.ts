@@ -4,6 +4,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-project',
@@ -20,6 +21,7 @@ export class EditProjectComponent implements OnInit {
     private router: Router,
     private iziToast: Ng2IzitoastService) { }
 
+  apiUrl: string = environment.apiUrl;
   project: string;
   technology: string;
   description: string;
@@ -33,7 +35,7 @@ export class EditProjectComponent implements OnInit {
         this.project = data.project;
         this.technology = data.technology;
         this.description = data.description;
-        this.uploadImageUrl = 'http://localhost:8080/image/ver/' + data.image.name;
+        this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
       },
       err => {
         this.iziToast.error({

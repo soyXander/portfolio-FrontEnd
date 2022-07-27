@@ -5,6 +5,7 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Education } from 'src/app/models/education';
 import { EducationService } from 'src/app/services/education.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-education',
@@ -21,6 +22,7 @@ export class EducationComponent implements OnInit, OnDestroy {
   faXmark = faXmark;
 
   educations: Education[] = [];
+  apiUrl: string = environment.apiUrl;
   isLoggedIn: boolean;
   isAdmin: boolean;
 
@@ -28,8 +30,7 @@ export class EducationComponent implements OnInit, OnDestroy {
     private eduService: EducationService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
-    private iziToast: Ng2IzitoastService
-  ) { }
+    private iziToast: Ng2IzitoastService) { }
 
   ngOnInit(): void {
     this.navSubscription = this.router.events.subscribe((evt: any) => {

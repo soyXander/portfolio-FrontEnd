@@ -5,6 +5,7 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project',
@@ -21,6 +22,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   faXmark = faXmark;
 
   projects: Project[] = [];
+  apiUrl: string = environment.apiUrl;
   isLoggedIn: boolean;
   isAdmin: boolean;
 

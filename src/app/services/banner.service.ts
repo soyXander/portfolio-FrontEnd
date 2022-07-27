@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BannerService {
 
-  bannerUrl: string = 'http://localhost:8080/banner/';
+  bannerUrl: string = environment.apiUrl + 'banner/';
 
   constructor(private httpClient: HttpClient) { }
 

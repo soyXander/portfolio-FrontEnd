@@ -5,6 +5,7 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-experience',
@@ -21,6 +22,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   faXmark = faXmark;
 
   experiences: Experience[] = [];
+  apiUrl: string = environment.apiUrl;
   isLoggedIn: boolean;
   isAdmin: boolean;
 

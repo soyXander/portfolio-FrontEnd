@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Image } from '../models/image';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Image } from '../models/image';
 })
 export class ImageService {
 
-  imageURL = 'http://localhost:8080/image/';
+  imageURL = environment.apiUrl + 'image/';
 
   constructor(private httpClient: HttpClient) { }
 

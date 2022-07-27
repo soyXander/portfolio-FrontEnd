@@ -4,6 +4,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Experience } from 'src/app/models/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-experience',
@@ -20,6 +21,7 @@ export class EditExperienceComponent implements OnInit {
     private router: Router,
     private iziToast: Ng2IzitoastService) { }
 
+  apiUrl: string = environment.apiUrl;
   company: string;
   position: string;
   description: string;
@@ -33,7 +35,7 @@ export class EditExperienceComponent implements OnInit {
         this.company = data.company;
         this.position = data.position;
         this.description = data.description;
-        this.uploadImageUrl = 'http://localhost:8080/image/ver/' + data.image.name;
+        this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
       },
       err => {
         this.iziToast.error({

@@ -17,10 +17,9 @@ export class EditSkillComponent implements OnInit {
 
   constructor(
     private skillServices: SkillService,
-    private iziToast: Ng2IzitoastService,
-    private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) { }
+    private router: Router,
+    private iziToast: Ng2IzitoastService) { }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params["id"];

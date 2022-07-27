@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { BannerService } from 'src/app/services/banner.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-banner',
@@ -13,6 +14,7 @@ export class EditBannerComponent implements OnInit {
 
   faCamera = faCamera;
 
+  apiUrl: string = environment.apiUrl;
   bannerImage: File;
   bannerUrl: string = 'https://dummyimage.com/1920x1080';
 
@@ -27,7 +29,7 @@ export class EditBannerComponent implements OnInit {
     this.bannerService.view(id).subscribe(
       data => {
         if (data != null) {
-          this.bannerUrl = 'http://localhost:8080/image/ver/' + data.image.name;
+          this.bannerUrl = this.apiUrl + 'image/ver/' + data.image.name;
         }
       },
       err => {
@@ -54,7 +56,6 @@ export class EditBannerComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params["id"];
     const image = this.bannerImage;
 
-    this.bannerService.update(1, image).subscribe(
     this.bannerService.update(id, image).subscribe(
       data => {
         this.iziToast.success({

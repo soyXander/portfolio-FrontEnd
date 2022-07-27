@@ -5,6 +5,7 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 import { UserDetails } from 'src/app/models/user-details';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserDetailsService } from 'src/app/services/user-details.service';
+import { environment } from 'src/environments/environment';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
@@ -21,6 +22,7 @@ export class AboutMeComponent implements OnInit, OnDestroy {
   faPlus = faPlus;
   faXmark = faXmark;
 
+  apiUrl: string = environment.apiUrl;
   userDetails: UserDetails[];
   isLoggedIn: boolean;
   isAdmin: boolean;
@@ -49,7 +51,7 @@ export class AboutMeComponent implements OnInit, OnDestroy {
       data => {
         this.userDetails = data;
         if (data != null && data[0]?.image != null) {
-          this.profileImg = 'http://localhost:8080/image/ver/' + this.userDetails[0].image.name;
+          this.profileImg = this.apiUrl + 'image/ver/' + this.userDetails[0].image.name;
         }
       },
       err => {

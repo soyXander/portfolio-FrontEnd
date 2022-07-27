@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
@@ -11,8 +11,7 @@ export class GuardService {
 
   constructor(
     private tokenStorageServices: TokenStorageService,
-    private router: Router
-  ) { }
+    private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const expectedRol = route.data['expectedRol'];

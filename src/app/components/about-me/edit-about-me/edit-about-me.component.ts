@@ -4,6 +4,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { UserDetails } from 'src/app/models/user-details';
 import { UserDetailsService } from 'src/app/services/user-details.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-about-me',
@@ -14,6 +15,7 @@ export class EditAboutMeComponent implements OnInit {
 
   faPen = faPen;
 
+  apiUrl: string = environment.apiUrl;
   firstName: string;
   lastName: string;
   location: string;
@@ -44,7 +46,7 @@ export class EditAboutMeComponent implements OnInit {
         this.title = data.title;
         this.description = data.description;
         if (data != null && data.image != null) {
-          this.profileImg = 'http://localhost:8080/image/ver/' + data.image.name;
+          this.profileImg = this.apiUrl + 'image/ver/' + data.image.name;
         }
         this.facebookId = data.facebookId;
         this.instagramId = data.instagramId;

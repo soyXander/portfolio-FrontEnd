@@ -4,6 +4,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { Education } from 'src/app/models/education';
 import { EducationService } from 'src/app/services/education.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-education',
@@ -20,6 +21,7 @@ export class EditEducationComponent implements OnInit {
     private router: Router,
     private iziToast: Ng2IzitoastService) { }
 
+  apiUrl: string = environment.apiUrl;
   institute: string;
   certification: string;
   description: string;
@@ -33,7 +35,7 @@ export class EditEducationComponent implements OnInit {
         this.institute = data.institute;
         this.certification = data.certification;
         this.description = data.description;
-        this.uploadImageUrl = 'http://localhost:8080/image/ver/' + data.image.name;
+        this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
       },
       err => {
         this.iziToast.error({

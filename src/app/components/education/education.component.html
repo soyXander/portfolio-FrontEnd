@@ -16,7 +16,7 @@
     <div class="flex flex-wrap -m-4">
       <div class="xl:w-1/3 md:w-1/2 p-4" *ngFor="let education of educations">
         <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg shadow-xl hover:shadow-tomato-500 duration-700">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" [src]="education.image ? 'http://localhost:8080/image/ver/' + education.image.name : 'https://dummyimage.com/720x400'">
+          <img class="h-40 rounded w-full object-cover object-center mb-6" [src]="education.image ? apiUrl + 'image/ver/' + education.image.name : 'https://dummyimage.com/720x400'">
           <h3 class="tracking-widest text-orange-600 text-xs font-medium title-font">{{education.certification }}</h3>
           <h2 class="text-lg text-black font-medium title-font mb-4">{{education.institute}}</h2>
           <p class="leading-relaxed text-base">{{education.description}}</p>
