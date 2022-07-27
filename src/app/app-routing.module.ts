@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'sobre-mi/agregar', component: AddAboutMeComponent, canActivate: [guard], data: {expectedRol: ['admin']}},
   {path: 'sobre-mi/editar/:id', component: EditAboutMeComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
   {path: 'banner/agregar', component: AddBannerComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
-  {path: 'banner/editar', component: EditBannerComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
+  {path: 'banner/editar/:id', component: EditBannerComponent, canActivate: [guard], data: {expectedRol: ['admin'] }},
   {path: 'experiencia/agregar', component: AddExperienceComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
   {path: 'experiencia/editar/:id', component: EditExperienceComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},
   {path: 'educacion/agregar', component: AddEducationComponent, canActivate: [guard], data: { expectedRol: ['admin'] }},

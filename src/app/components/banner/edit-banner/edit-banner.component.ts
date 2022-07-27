@@ -18,11 +18,13 @@ export class EditBannerComponent implements OnInit {
 
   constructor(
     private bannerService: BannerService,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private iziToast: Ng2IzitoastService) { }
 
   ngOnInit(): void {
-    this.bannerService.view(1).subscribe(
+    const id = this.activatedRoute.snapshot.params["id"];
+    this.bannerService.view(id).subscribe(
       data => {
         if (data != null) {
           this.bannerUrl = 'http://localhost:8080/image/ver/' + data.image.name;
@@ -49,9 +51,11 @@ export class EditBannerComponent implements OnInit {
   }
 
   onUpdate(): void {
+    const id = this.activatedRoute.snapshot.params["id"];
     const image = this.bannerImage;
 
     this.bannerService.update(1, image).subscribe(
+    this.bannerService.update(id, image).subscribe(
       data => {
         this.iziToast.success({
           title: 'Sobre mi actualizado',
