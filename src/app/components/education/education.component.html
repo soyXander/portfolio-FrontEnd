@@ -17,8 +17,12 @@
       <div class="xl:w-1/3 md:w-1/2 p-4" *ngFor="let education of educations">
         <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg shadow-xl hover:shadow-tomato-500 duration-700">
           <img class="h-40 rounded w-full object-cover object-center mb-6" [src]="education.image ? apiUrl + 'image/ver/' + education.image.name : 'https://dummyimage.com/720x400'">
-          <h3 class="tracking-widest text-orange-600 text-xs font-medium title-font">{{education.certification }}</h3>
-          <h2 class="text-lg text-black font-medium title-font mb-4">{{education.institute}}</h2>
+          <h3 class="tracking-widest text-orange-600 text-xs font-medium title-font">{{education.degree}}</h3>
+          <h2 class="text-lg text-black font-medium title-font">{{education.institute}}</h2>
+          <h3 *ngIf="education.endDate != 'Actualmente'; else date" class="tracking-widest text-tomato-600 text-xs font-medium title-font mb-4">{{education.startDate | date:'MM/yy'}} - {{education.endDate | date:'MM/yy'}}</h3>
+          <ng-template #date>
+            <h3 class="tracking-widest text-tomato-600 text-xs font-medium title-font mb-4">{{education.startDate | date:'M/yy'}} - {{education.endDate}}</h3>
+          </ng-template>
           <p class="leading-relaxed text-base">{{education.description}}</p>
           <div *ngIf="isLoggedIn && isAdmin" class="flex">
             <div class="w-1/2 mr-3 mt-2 h-10 flex justify-center items-center bg-tomato hover:bg-tomato-600 active:bg-tomato-700 duration-500 rounded-xl cursor-pointer" routerLink="/educacion/editar/{{education.id}}" >

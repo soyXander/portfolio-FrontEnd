@@ -23,8 +23,11 @@ export class EditEducationComponent implements OnInit {
 
   apiUrl: string = environment.apiUrl;
   institute: string;
-  certification: string;
+  degree: string;
   description: string;
+  startDate: string;
+  endDate: string;
+  isCurrently: boolean = false;
   uploadedImage: File;
   uploadImageUrl: string;
 
@@ -33,8 +36,13 @@ export class EditEducationComponent implements OnInit {
     this.eduService.detail(id).subscribe(
       data => {
         this.institute = data.institute;
-        this.certification = data.certification;
+        this.degree = data.degree;
         this.description = data.description;
+        this.startDate = data.startDate;
+        this.endDate = data.endDate;
+        if (data.endDate == 'Actualmente') {
+          this.isCurrently = true;
+        }
         this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
       },
       err => {
@@ -59,7 +67,7 @@ export class EditEducationComponent implements OnInit {
 
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params["id"];
-    const education = new Education(this.institute, this.certification, this.description);
+    const education = new Education(this.institute, this.degree, this.description, this.startDate, this.endDate);
     const image = this.uploadedImage;
     this.eduService.update(id, education, image).subscribe(
       data => {
@@ -77,6 +85,17 @@ export class EditEducationComponent implements OnInit {
         this.router.navigate(['/']);
       }
     );
+  }
+
+  isCurrent(event: any) {
+    if (event.target.checked && this.isCurrently == false) {
+      this.isCurrently = true;
+      this.endDate = 'Actualmente';
+    }
+    else {
+      this.isCurrently = false;
+      this.endDate = '';
+    }
   }
 
   @HostListener('window:keyup.esc')

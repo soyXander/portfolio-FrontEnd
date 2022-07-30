@@ -20,8 +20,11 @@ export class AddEducationComponent {
     private router: Router) { }
 
   institute: string;
-  certification: string;
+  degree: string;
   description: string;
+  startDate: string;
+  endDate: string;
+  isCurrently: boolean = false;
   uploadedImage: File;
   uploadImageUrl: string;
 
@@ -36,7 +39,7 @@ export class AddEducationComponent {
   }
 
   onCreate(): void {
-    const education = new Education(this.institute, this.certification, this.description);
+    const education = new Education(this.institute, this.degree, this.description, this.startDate, this.endDate);
     const image = this.uploadedImage;
 
     this.eduService.save(education, image).subscribe(
@@ -54,7 +57,19 @@ export class AddEducationComponent {
           message: err.error.message,
           position: 'bottomRight'
         });
-      });
+      }
+    );
+  }
+
+  isCurrent(event: any) {
+    if ( event.target.checked && this.isCurrently == false ) {
+      this.isCurrently = true;
+      this.endDate = 'Actualmente';
+    }
+    else {
+      this.isCurrently = false;
+      this.endDate = '';
+    }
   }
 
   @HostListener('window:keyup.esc')
