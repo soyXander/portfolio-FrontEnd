@@ -17,12 +17,12 @@ export class AddProjectComponent {
   constructor(
     private projectService: ProjectService,
     private iziToast: Ng2IzitoastService,
-    private router: Router
-  ) { }
+    private router: Router) { }
 
   project: string;
-  technology: string;
+  creationDate: string;
   description: string;
+  link: string;
   uploadedImage: File;
   uploadImageUrl: string;
 
@@ -37,7 +37,7 @@ export class AddProjectComponent {
   }
 
   onCreate(): void {
-    const project = new Project(this.project, this.technology, this.description);
+    const project = new Project(this.project, this.creationDate, this.description, this.link);
     const image = this.uploadedImage;
 
     this.projectService.save(project, image).subscribe(

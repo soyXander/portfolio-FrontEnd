@@ -3,13 +3,15 @@ import { Image } from "./image";
 export class Project {
   id: number;
   project: string;
-  technology: string;
+  creationDate: string;
   description: string;
+  link: string;
   image: Image;
 
-  constructor(project: string, technology: string, description: string) {
+  constructor(project: string, creationDate: string, description: string, link: string) {
     this.project = project;
-    this.technology = technology;
+    this.creationDate = creationDate;
     this.description = description;
+    this.link = link;
   }
 }

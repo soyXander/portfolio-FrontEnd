@@ -37,11 +37,11 @@
         <div class="md:flex md:items-center mb-2">
           <div class="md:w-1/3">
             <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-              Tecnologia
+              Fecha de creación
             </label>
           </div>
           <div class="md:w-2/3">
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500" type="text" placeholder="Angular, Spring Boot, MySQL" name="technology" [(ngModel)]="technology">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500 mb-1" type="month" name="creationDate" [(ngModel)]="creationDate">
           </div>
         </div>
         <div class="md:flex md:items-center mb-2">
@@ -52,6 +52,16 @@
           </div>
           <div class="md:w-2/3">
             <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500" type="text" rows="4" placeholder="Participación en el desarrollo de nuevos servicios en JavaScript" name="description" [(ngModel)]="description"></textarea>
+          </div>
+        </div>
+        <div class="md:flex md:items-center mb-2">
+          <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+              Link
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-tomato-500" type="text" placeholder="https://www.google.com" name="link" [(ngModel)]="link">
           </div>
         </div>
 

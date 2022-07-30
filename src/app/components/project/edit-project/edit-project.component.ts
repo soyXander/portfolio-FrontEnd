@@ -23,8 +23,9 @@ export class EditProjectComponent implements OnInit {
 
   apiUrl: string = environment.apiUrl;
   project: string;
-  technology: string;
+  creationDate: string;
   description: string;
+  link: string;
   uploadedImage: File;
   uploadImageUrl: string;
 
@@ -33,9 +34,12 @@ export class EditProjectComponent implements OnInit {
     this.projectService.detail(id).subscribe(
       data => {
         this.project = data.project;
-        this.technology = data.technology;
+        this.creationDate = data.creationDate;
         this.description = data.description;
-        this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
+        this.link = data.link;
+        if (data.image != null) {
+          this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
+        }
       },
       err => {
         this.iziToast.error({
@@ -58,7 +62,7 @@ export class EditProjectComponent implements OnInit {
 
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params["id"];
-    const project = new Project(this.project, this.technology, this.description);
+    const project = new Project(this.project, this.creationDate, this.description, this.link);
     const image = this.uploadedImage;
 
     this.projectService.update(id, project, image).subscribe(
