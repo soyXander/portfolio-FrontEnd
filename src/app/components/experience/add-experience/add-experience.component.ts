@@ -23,6 +23,9 @@ export class AddExperienceComponent {
   company: string;
   position: string;
   description: string;
+  startDate: string;
+  endDate: string;
+  isCurrently: boolean = false;
   uploadedImage: File;
   uploadImageUrl: string;
 
@@ -37,7 +40,7 @@ export class AddExperienceComponent {
   }
 
   onCreate(): void {
-    const experience = new Experience(this.company, this.position, this.description);
+    const experience = new Experience(this.company, this.position, this.description, this.startDate, this.endDate);
     const image = this.uploadedImage;
 
     this.expService.save(experience, image).subscribe(
@@ -56,6 +59,17 @@ export class AddExperienceComponent {
           position: 'bottomRight'
       });
     });
+  }
+
+  isCurrent(event: any) {
+    if ( event.target.checked && this.isCurrently == false ) {
+      this.isCurrently = true;
+      this.endDate = 'Actualmente';
+    }
+    else {
+      this.isCurrently = false;
+      this.endDate = '';
+    }
   }
 
   @HostListener('window:keyup.esc')

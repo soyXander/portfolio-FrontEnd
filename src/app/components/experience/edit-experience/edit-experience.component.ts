@@ -25,6 +25,9 @@ export class EditExperienceComponent implements OnInit {
   company: string;
   position: string;
   description: string;
+  startDate: string;
+  endDate: string;
+  isCurrently: boolean = false;
   uploadedImage: File;
   uploadImageUrl: string;
 
@@ -35,6 +38,11 @@ export class EditExperienceComponent implements OnInit {
         this.company = data.company;
         this.position = data.position;
         this.description = data.description;
+        this.startDate = data.startDate;
+        this.endDate = data.endDate;
+        if (data.endDate == 'Actualmente') {
+          this.isCurrently = true;
+        }
         this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
       },
       err => {
@@ -58,7 +66,7 @@ export class EditExperienceComponent implements OnInit {
 
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params["id"];
-    const experience = new Experience(this.company, this.position, this.description);
+    const experience = new Experience(this.company, this.position, this.description, this.startDate, this.endDate);
     const image = this.uploadedImage;
 
     this.expServices.update(id, experience, image).subscribe(
@@ -76,6 +84,17 @@ export class EditExperienceComponent implements OnInit {
         });
       }
     );
+  }
+
+  isCurrent(event: any) {
+    if ( event.target.checked && this.isCurrently == false ) {
+      this.isCurrently = true;
+      this.endDate = 'Actualmente';
+    }
+    else {
+      this.isCurrently = false;
+      this.endDate = '';
+    }
   }
 
   @HostListener('window:keyup.esc')
