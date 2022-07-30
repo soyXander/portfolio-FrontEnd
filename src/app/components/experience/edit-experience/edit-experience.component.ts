@@ -87,7 +87,7 @@ export class EditExperienceComponent implements OnInit {
   }
 
   isCurrent(event: any) {
-    if ( event.target.checked && this.isCurrently == false ) {
+    if (event.target.checked && this.isCurrently == false) {
       this.isCurrently = true;
       this.endDate = 'Actualmente';
     }
