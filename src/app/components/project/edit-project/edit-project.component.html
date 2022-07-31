@@ -71,7 +71,7 @@
               Imagen
             </label>
             <div class="w-full h-52 relative cursor-pointer" (click)="fileInput.click()">
-              <img class="absolute w-full h-52 rounded object-cover object-center" [src]="uploadedImage">
+              <img class="absolute w-full h-52 rounded object-cover object-center" [src]="uploadImageUrl">
               <div class="absolute rounded h-52 opacity-0 hover:opacity-100 hover:bg-black/50 active:bg-black/70 duration-300 inset-0 flex justify-center items-center text-3xl text-white"><fa-icon [icon]="faPen" class="text-white"></fa-icon></div>
               <input #fileInput type="file" accept=".jpg, .jpeg, .png, .gif" (change)="updateImage($event)" class="hidden"/>
             </div>

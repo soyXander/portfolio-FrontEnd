@@ -27,7 +27,7 @@ export class EditProjectComponent implements OnInit {
   description: string;
   link: string;
   uploadedImage: File;
-  uploadImageUrl: string;
+  uploadImageUrl: string = 'https://dummyimage.com/720x400';
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params["id"];

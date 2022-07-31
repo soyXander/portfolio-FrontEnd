@@ -29,7 +29,7 @@ export class EditExperienceComponent implements OnInit {
   endDate: string;
   isCurrently: boolean = false;
   uploadedImage: File;
-  uploadImageUrl: string;
+  uploadImageUrl: string = 'https://dummyimage.com/720x400';
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params["id"];
