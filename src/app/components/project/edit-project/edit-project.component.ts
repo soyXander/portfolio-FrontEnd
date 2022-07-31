@@ -37,7 +37,7 @@ export class EditProjectComponent implements OnInit {
         this.creationDate = data.creationDate;
         this.description = data.description;
         this.link = data.link;
-        if (data.image != null) {
+        if (data != null && data.image != null) {
           this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
         }
       },

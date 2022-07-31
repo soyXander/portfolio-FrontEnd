@@ -28,7 +28,7 @@ export class EditBannerComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params["id"];
     this.bannerService.view(id).subscribe(
       data => {
-        if (data != null) {
+        if (data != null && data.image != null) {
           this.bannerUrl = this.apiUrl + 'image/ver/' + data.image.name;
         }
       },

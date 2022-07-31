@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ng2IzitoastService } from 'ng2-izitoast';
-import { HotObservable } from 'rxjs/internal/testing/HotObservable';
 import { Skill } from 'src/app/models/skill';
 import { SkillService } from 'src/app/services/skill.service';
 

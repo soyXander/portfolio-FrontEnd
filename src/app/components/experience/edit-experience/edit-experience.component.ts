@@ -43,7 +43,9 @@ export class EditExperienceComponent implements OnInit {
         if (data.endDate == 'Actualmente') {
           this.isCurrently = true;
         }
-        this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
+        if (data != null && data.image != null) {
+          this.uploadImageUrl = this.apiUrl + 'image/ver/' + data.image.name;
+        }
       },
       err => {
         this.iziToast.error({
